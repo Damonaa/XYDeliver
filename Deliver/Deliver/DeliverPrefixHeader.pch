@@ -1,0 +1,59 @@
+//
+//  DeliverPrefixHeader.pch
+//  Deliver
+//
+//  Created by 李小亚 on 16/5/30.
+//  Copyright © 2016年 李小亚. All rights reserved.
+//
+
+#ifndef DeliverPrefixHeader_pch
+#define DeliverPrefixHeader_pch
+
+#ifdef DEBUG//调试
+
+//#define XYLog(...) NSLog(__VA_ARGS__)
+#define XYLog(...) NSLog(@"%s\n %@\n\n", __func__, [NSString stringWithFormat:__VA_ARGS__])
+
+#else//发布
+
+#define XYLog(...)
+
+#endif
+
+#define XYShowBtnDuration 0.6
+
+//#warning 修改边界线的位置
+
+#define XYBoundaryMarignLine 0
+
+//NSNotification
+#define XYTemplateChangeScale   @"changeScale"
+#define XYSelectedMenu          @"selectedMenu"
+#define XYSwitchBorderStyle     @"switchBorderStyle"
+#define XYSwitchSelectedColor   @"switchSelectedColor"
+#define XYSwitchSelectedWidth   @"switchSelectedWidth"
+#define XYSelectedTemplate      @"selectedTemplate"
+
+#define XYCurrentCursorPosition @"currentCursorPosition"
+#define XYIsDeleteText          @"isDeleteText"
+#define XYIsNewRespone          @"isNewRespone"
+
+#define XYChangeFont            @"changeFont" 
+
+#define XYFontSize              @"fontSize"
+#define XYFontItem              @"fontItem"
+#define XYFontTag               @"fontTag"
+
+#define XYTapPreviewImage       @"tapPreviewImage"
+
+#define XYKeyWindow [UIApplication sharedApplication].keyWindow
+#define XYScreenWidth [UIScreen mainScreen].bounds.size.width
+#define XYScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define XYAppKey @"57723065e0f55ad81a0031da"
+
+#import "UIView+AdjustFrame.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* DeliverPrefixHeader_pch */
