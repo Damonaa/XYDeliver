@@ -25,8 +25,10 @@
 #import "XYFont.h"
 #import "XYFontTool.h"
 #import "XYFilterViewController.h"
+#import "XYCoverView.h"
+#import "XYShareTool.h"
 
-@interface XYMainViewController ()<XYToolOptionsViewDelegate, XYColorViewDelegate, XYColorBtnDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, TZImagePickerControllerDelegate,XYKeyboardToolBarViewDelegate, XYTextSettingViewDelegate>
+@interface XYMainViewController ()<XYToolOptionsViewDelegate, XYColorViewDelegate, XYColorBtnDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, TZImagePickerControllerDelegate,XYKeyboardToolBarViewDelegate, XYTextSettingViewDelegate, XYCoverViewDelegate>
 /**
  *  工具菜单视图
  */
@@ -130,19 +132,21 @@
     //监听文本编辑的当前位置
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentCursorPositionChange:) name:XYCurrentCursorPosition object:nil];
     
-    
-//    NSArray *properties = [CIFilter filterNamesInCategory:
-//                           kCICategoryBuiltIn];
-//    NSLog(@"%@", properties);
-//    for (NSString *filterName in properties) {
-//        CIFilter *fltr = [CIFilter filterWithName:filterName];
-//        NSLog(@"%@", [fltr attributes]);
-//    }
+    //监听分享成功
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareSucceed) name:XYShareSucceed object:nil];
+}
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
 }
 
 #pragma mark - 添加工具选项按钮
 - (void)setupChildView{
+    
+    UIButton *shareBtn = [UIButton buttonWithNormalImage:[UIImage imageNamed:@"upload_icon_default"] highlightedImage:[UIImage imageNamed:@"upload_icon_pressed"] target:self selcetor:@selector(shareBtnClick) controlEvent:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+    
     //拼图的容器
 //    CGFloat marginCont = 15;
     XYContainerView *containerView = [[XYContainerView alloc] init];
@@ -203,26 +207,20 @@
         [self presentViewController:templateVC animated:YES completion:nil];
     }else if (btn.tag == 4){//滤镜
         XYFilterViewController *filterVC = [[XYFilterViewController alloc] init];
-        filterVC.originalImage = [self clipScreen];
+        NSData *temp = UIImagePNGRepresentation([self clipScreen]);
+        filterVC.originalImageData = temp;
+//        filterVC.originalImage = [self clipScreen];
+//        [self.navigationController pushViewController:filterVC animated:YES];
         [self presentViewController:filterVC animated:YES completion:nil];
-
     }
 }
 //截取图片
 - (UIImage *)clipScreen{
-//    UIGraphicsBeginImageContext(_containerView.frame.size);
-    
-//    CGSize clipSize = CGSizeMake(_containerView.frame.size.width + 5, _containerView.frame.size.height + 5);
-    
     UIGraphicsBeginImageContextWithOptions(_containerView.frame.size, NO, [UIScreen mainScreen].scale);
     [_containerView.layer renderInContext:UIGraphicsGetCurrentContext()];
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
-//    NSData *data = UIImagePNGRepresentation(image);
-//    [data writeToFile:@"/Users/lixiaoya/Desktop/capture.png" atomically:YES];
-
     return image;
     
 }
@@ -313,7 +311,20 @@
 
 #pragma mark - 监听键盘弹出隐藏
 - (void)keyboardWillShow:(NSNotification *)noti{
-    [self transformKBToolBarWithNoti:noti kbToolBarHidden:NO];
+    
+    if ([_containerView.currentSV.textView isFirstResponder]) {
+        [self transformKBToolBarWithNoti:noti kbToolBarHidden:NO];
+    }else{
+        XYVerticalTextView *vTV = _containerView.currentSV.verticalTextView;
+        for (XYTextView *tv in vTV.textViews) {
+            if ([tv isFirstResponder]) {
+                [self transformKBToolBarWithNoti:noti kbToolBarHidden:NO];
+                break;
+            }
+        }
+    }
+    
+    
     //键盘弹出后的位置
     _keyboardLastRect = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 }
@@ -574,6 +585,39 @@
     _containerView.images = (NSMutableArray *)photos;
     
 }
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+//    XYLog(@"%@", info);
+    
+    UIImage *camearImage = info[UIImagePickerControllerOriginalImage];
+    _containerView.currentSV.image = camearImage;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+#pragma mark - 分享
+- (void)shareBtnClick{
+    XYCoverView *coverView = [XYCoverView show];
+    coverView.delegate = self;
+    
+//    [_containerView removeFromSuperview];
+}
+
+#pragma mark - XYCoverViewDelegate
+- (void)coverView:(XYCoverView *)coverView didClickShareBtnWithIndex:(NSInteger)index{
+    UIImage *image = [self clipScreen];
+    //    保存到相册
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    if (index == 3) {//相册
+        //
+    }else if (index == 2){//微博
+        [XYShareTool shareToAppWingName:@"sina" image:image text:@"来自小亚的私人订制" viewController:self];
+    }else if (index == 1){//空间 qzone
+        [XYShareTool shareToAppWingName:@"qzone" image:image text:@"分享图片" viewController:self];
+    }else{//朋友圈 wxtimeline
+        [XYShareTool shareToAppWingName:@"wxtimeline" image:image text:nil viewController:self];
+    }
+}
+
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

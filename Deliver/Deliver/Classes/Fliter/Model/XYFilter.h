@@ -25,6 +25,8 @@
  */
 @property (nonatomic, strong) GPUImageFilter* imageFilter;
 
+@property (nonatomic, strong) NSData *imageData;
+
 
 // Normalized values by which each color channel is multiplied. The range is from 0.0 up, with 1.0 as the default.
 @property (readwrite, nonatomic) CGFloat red;
@@ -32,5 +34,5 @@
 @property (readwrite, nonatomic) CGFloat blue;
 
 + (instancetype)filterWithOriginalImage:(UIImage *)originalImage filter:(GPUImageFilter *)imageFilter red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue title:(NSString *)title;
-
++ (instancetype)filterWithOriginalImageData:(NSData *)imageData title:(NSString *)title;
 @end

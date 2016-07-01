@@ -17,7 +17,13 @@
 #import "XYPreviewsView.h"
 #import "XYCoverView.h"
 
-@interface XYFilterViewController ()<XYFilterToolBarDelegate, XYCoverViewDelegate>
+#import "UMSocialSinaSSOHandler.h"
+#import "UMSocial.h"
+
+#import "XYShareTool.h"
+
+
+@interface XYFilterViewController ()<XYFilterToolBarDelegate, XYCoverViewDelegate, UMSocialUIDelegate>
 /**
  *  预览模型
  */
@@ -31,39 +37,55 @@
  *  展示的效果图
  */
 @property (nonatomic, weak) UIImageView *displayImageView;
+/**
+ *  分享界面
+ */
+//@property (nonatomic, weak) XYCoverView *coverView;
+
+/**
+ *  原始图片
+ */
+@property (nonatomic, strong) UIImage *originalImage;
 
 @end
 
 @implementation XYFilterViewController
 
+- (UIImage *)originalImage{
+    if (!_originalImage) {
+        _originalImage = [UIImage imageWithData:_originalImageData];
+    }
+    return  _originalImage;
+}
+
 #pragma mark - 懒加载
 - (NSMutableArray *)previews{
     if (!_previews) {
         _previews = [NSMutableArray array];
-        
-        XYFilter *filter0 = [XYFilter filterWithOriginalImage:_originalImage filter:nil red:0 green:0 blue:0 title:@"原图"];
+
+        XYFilter *filter0 = [XYFilter filterWithOriginalImage:self.originalImage filter:nil red:0 green:0 blue:0 title:@"原图"];
         [_previews addObject:filter0];
-        
         GPUImageSketchFilter *sketchFilter = [[GPUImageSketchFilter alloc] init];
         XYFilter *filter1 = [XYFilter filterWithOriginalImage:_originalImage filter:sketchFilter red:0 green:0 blue:0 title:@"素描"];
         [_previews addObject:filter1];
+//
+//        GPUImageMonochromeFilter *monochromeFilter = [[GPUImageMonochromeFilter alloc] init];
+//        XYFilter *filter2 = [XYFilter filterWithOriginalImage:_originalImage filter:monochromeFilter red:0 green:0 blue:0 title:@"黑白照片"];
+//        [_previews addObject:filter2];
+//
+//        GPUImageRGBFilter *rgbFilter = [[GPUImageRGBFilter alloc] init];
+//        XYFilter *filter3 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:0.8 green:1.0 blue:1.0 title:@"滤镜3"];
+//        [_previews addObject:filter3];
+//        
+//        XYFilter *filter4 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:1.0 green:0.8 blue:1.0 title:@"滤镜4"];
+//        [_previews addObject:filter4];
+//        
+//        XYFilter *filter5 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:1.0 green:1.0 blue:0.8 title:@"滤镜5"];
+//        [_previews addObject:filter5];
+//        
+//        XYFilter *filter6 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:0.9 green:0.9 blue:0.9 title:@"滤镜6"];
+//        [_previews addObject:filter6];
         
-        GPUImageMonochromeFilter *monochromeFilter = [[GPUImageMonochromeFilter alloc] init];
-        XYFilter *filter2 = [XYFilter filterWithOriginalImage:_originalImage filter:monochromeFilter red:0 green:0 blue:0 title:@"黑白照片"];
-        [_previews addObject:filter2];
-        
-        GPUImageRGBFilter *rgbFilter = [[GPUImageRGBFilter alloc] init];
-        XYFilter *filter3 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:0.8 green:1.0 blue:1.0 title:@"滤镜3"];
-        [_previews addObject:filter3];
-        
-        XYFilter *filter4 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:1.0 green:0.8 blue:1.0 title:@"滤镜4"];
-        [_previews addObject:filter4];
-        
-        XYFilter *filter5 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:1.0 green:1.0 blue:0.8 title:@"滤镜5"];
-        [_previews addObject:filter5];
-        
-        XYFilter *filter6 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:0.9 green:0.9 blue:0.9 title:@"滤镜6"];
-        [_previews addObject:filter6];
         
     }
     return _previews;
@@ -77,6 +99,8 @@
     
     //监听图片的点击
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeDisplayImage:) name:XYTapPreviewImage object:nil];
+    //监听分享成功
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareSucceed) name:XYShareSucceed object:nil];
 }
 
 
@@ -91,7 +115,7 @@
     displayImageView.height = displayImageView.width * 4 / 3;
     displayImageView.x = 10;
     displayImageView.y = 25;
-    displayImageView.image = _originalImage;
+    displayImageView.image = self.originalImage;
     
     
     //底部工具条
@@ -128,7 +152,6 @@
 - (void)filterToolBarDidClickDoneBtn:(XYFilterToolBar *)filterToolBar{
     XYCoverView *coverView = [XYCoverView show];
     coverView.delegate = self;
-//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)filterToolBarDidClickCancelBtn:(XYFilterToolBar *)filterToolBar{
@@ -137,22 +160,30 @@
 
 #pragma mark - XYCoverViewDelegate
 - (void)coverView:(XYCoverView *)coverView didClickShareBtnWithIndex:(NSInteger)index{
+    //    保存到相册
+    UIImageWriteToSavedPhotosAlbum(self.displayImageView.image, nil, nil, nil);
     if (index == 3) {//相册
-//    保存到相册
-        UIImageWriteToSavedPhotosAlbum(self.displayImageView.image, nil, nil, nil);
+        //
     }else if (index == 2){//微博
-        
-    }else if (index == 1){//空间
-        
-    }else{//朋友圈
-        
+        [XYShareTool shareToAppWingName:@"sina" image:_displayImageView.image text:@"来自小亚的私人订制" viewController:self];
+    }else if (index == 1){//空间 qzone
+        [XYShareTool shareToAppWingName:@"qzone" image:_displayImageView.image text:@"分享图片" viewController:self];
+    }else{//朋友圈 wxtimeline
+        [XYShareTool shareToAppWingName:@"wxtimeline" image:_displayImageView.image text:nil viewController:self];
     }
 }
 
+#pragma mark - 分享成功
+- (void)shareSucceed{
+    [XYCoverView hiden];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    _previewsView = nil;
-    _displayImageView.image = nil;
+//    self.originalImage = nil;
+//    [_previews removeAllObjects];
+//    _previewsView = nil;
+//    _displayImageView.image = nil;
     XYLog(@"XYFilterViewController.h 销毁");
 }
 

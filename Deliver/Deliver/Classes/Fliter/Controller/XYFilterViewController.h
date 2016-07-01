@@ -10,9 +10,8 @@
 
 @interface XYFilterViewController : UIViewController
 
-/**
- *  原始图片
- */
-@property (nonatomic, strong) UIImage *originalImage;
+
+
+@property (nonatomic, strong) NSData *originalImageData;
 
 @end

@@ -40,6 +40,7 @@
     [self addSubview:previewImageView];
     self.previewImageView = previewImageView;
     previewImageView.userInteractionEnabled = YES;
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPreviewImageView:)];
     [previewImageView addGestureRecognizer:tap];
     
@@ -72,6 +73,7 @@
         filter.blue = filterItem.blue;
         _previewImageView.image = [filter imageByFilteringImage:filterItem.originalImage];
     }else if ([filterItem.imageFilter isKindOfClass:[GPUImageMonochromeFilter class]]){//黑白照
+        
         GPUImageMonochromeFilter *filter = [[GPUImageMonochromeFilter alloc] init];
         _previewImageView.image = [filter imageByFilteringImage:filterItem.originalImage];
     }else if ([filterItem.imageFilter isKindOfClass:[GPUImageSketchFilter class]]){//素描

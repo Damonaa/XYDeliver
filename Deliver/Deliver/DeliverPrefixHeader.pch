@@ -24,7 +24,7 @@
 
 //#warning 修改边界线的位置
 
-#define XYBoundaryMarignLine 0
+#define XYBoundaryMarignLine 7
 
 //NSNotification
 #define XYTemplateChangeScale   @"changeScale"
@@ -46,12 +46,37 @@
 
 #define XYTapPreviewImage       @"tapPreviewImage"
 
+#define XYShareSucceed        @"shareSuccessed"
+
 #define XYKeyWindow [UIApplication sharedApplication].keyWindow
 #define XYScreenWidth [UIScreen mainScreen].bounds.size.width
 #define XYScreenHeight [UIScreen mainScreen].bounds.size.height
 
-#define XYAppKey @"57723065e0f55ad81a0031da"
+#define XYUMengAppKey @"57723065e0f55ad81a0031da"
 
+#define XYWeiboAppKey @"1377236703"
+#define XYWeiboSecret @"0fa053576c55afdf8a5aaf5a493fdb80"
+
+#define XYQZoneAppKey @"6YvnE5VQDevg9Ln9"
+#define XYQZoneAppID  @"1105431357"  //41e38b3d
+
+#define XYWeChatAppID @"wxec4542ce0d8d7c3d"
+#define XYWeChatAppSecret @"2a5d07e8896fce41bc72d159d3676a1c"
+
+/**
+ *  App Key：1377236703
+ App Secret：0fa053576c55afdf8a5aaf5a493fdb80
+ */
+
+/**
+ QQ
+ *  APP ID1105431357APP KEY6YvnE5VQDevg9Ln9
+ */
+
+/** wechat
+ *  AppID：wxec4542ce0d8d7c3d
+ AppSecret：2a5d07e8896fce41bc72d159d3676a1c
+ */
 #import "UIView+AdjustFrame.h"
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

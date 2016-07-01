@@ -11,7 +11,7 @@
 
 //#warning 修改边界线的位置
 
-#define XYBoundaryMarignLine 0
+//#define XYBoundaryMarignLine 7
 
 #import "XYContainerView.h"
 #import "XYScrollView.h"
@@ -57,6 +57,7 @@ typedef enum{
  *  选取的第一张图的View的index
  */
 //@property (nonatomic, assign) NSInteger firstIVIndex;
+
 
 
 @property (nonatomic, strong) XYScrollView *scrollView1;
@@ -122,7 +123,7 @@ typedef enum{
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor colorWithRed:0.995 green:0.996 blue:0.985 alpha:1.000];
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panScroll:)];
         [self addGestureRecognizer:pan];
         //模板比例
@@ -136,6 +137,10 @@ typedef enum{
         self.scrollView1 = [self addOneScrollView];
         self.scrollView2 = [self addOneScrollView];
         self.scrollView3 = [self addOneScrollView];
+        
+//        _scrollView1.backgroundColor = [UIColor colorWithRed:1.000 green:0.500 blue:0.000 alpha:0.466];
+//        _scrollView2.backgroundColor = [UIColor colorWithRed:1.000 green:0.000 blue:0.000 alpha:0.366];
+//        _scrollView3.backgroundColor = [UIColor colorWithRed:1.000 green:0.000 blue:1.000 alpha:0.509];
         
         //监听通知，模板的模型改变
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(templateScaleChange:) name:XYTemplateChangeScale object:nil];
@@ -381,7 +386,7 @@ typedef enum{
     //右
     XYLine *line4 = [[XYLine alloc] init];
     line4.startPoint = CGPointMake(self.width - edgeW - margin, self.height - edgeW - margin);
-    line4.endPoint = CGPointMake(self.width - edgeW - margin, edgeW - margin);
+    line4.endPoint = CGPointMake(self.width - edgeW - margin, edgeW + margin);
     [_lines addObject:line4];
     
     //计算内部的线
@@ -390,24 +395,24 @@ typedef enum{
             
             if (sv.x == 0 && sv.width == self.width && sv.y != 0) {
                 //top
-                [self insertTopLineWithScroll:sv];
+                [self insertTopLineWithScroll:sv edgeW:edgeW];
             }else if (CGRectGetMaxY(sv.frame) + 1 > self.height && sv.y != 0 && sv.x == 0) {
                 //top //由于屏幕尺寸不同，除以3 不能正常
-                [self insertTopLineWithScroll:sv];
+                [self insertTopLineWithScroll:sv edgeW:edgeW];
             }else if (CGRectGetMaxX(sv.frame) == self.width && sv.x != 0 && sv.y != 0) {
                 //top
-                [self insertTopLineWithScroll:sv];
+                [self insertTopLineWithScroll:sv edgeW:edgeW];
             }
             
             if (sv.y == 0 && sv.height == self.height && sv.x != 0) {
                 //left
-                [self insertLeftLineWithScroll:sv];
+                [self insertLeftLineWithScroll:sv edgeW:edgeW];
             }else if (CGRectGetMaxX(sv.frame) == self.width && sv.x != 0 && sv.y == 0) {
                 //left
-                [self insertLeftLineWithScroll:sv];
+                [self insertLeftLineWithScroll:sv edgeW:edgeW];
             }else if (CGRectGetMaxY(sv.frame) + 1 > self.height && sv.y != 0 && sv.x != 0) {
                 //left
-                [self insertLeftLineWithScroll:sv];
+                [self insertLeftLineWithScroll:sv edgeW:edgeW];
             }
         }
     }
@@ -416,17 +421,49 @@ typedef enum{
 }
 
 //top
-- (void)insertTopLineWithScroll:(XYScrollView *)sv{
+- (void)insertTopLineWithScroll:(XYScrollView *)sv edgeW:(CGFloat)edgeW{
     XYLine *line = [[XYLine alloc] init];
-    line.startPoint = CGPointMake(sv.origin.x + XYBoundaryMarignLine, sv.origin.y + XYBoundaryMarignLine / 2);//sv.origin;
-    line.endPoint = CGPointMake(CGRectGetMaxX(sv.frame) + XYBoundaryMarignLine, sv.y + XYBoundaryMarignLine / 2);
+    //起点
+    CGFloat startX;
+    if (sv.x == 0) {//sv的左边与容器View左边一致
+        startX = XYBoundaryMarignLine + edgeW / 2;
+    }else{
+        startX = sv.x - edgeW / 2;
+    }
+    line.startPoint = CGPointMake(startX, sv.y + edgeW / 2);
+    //终点
+    CGFloat endX;
+    if (CGRectGetMaxX(sv.frame) + XYBoundaryMarignLine + 1 > self.width) {//靠右边缘
+        endX = CGRectGetMaxX(sv.frame) - XYBoundaryMarignLine - edgeW;
+    }else{
+        endX = CGRectGetMaxX(sv.frame) - edgeW / 2;
+    }
+    line.endPoint = CGPointMake(endX, sv.y + edgeW / 2);
     [_lines addObject:line];
 }
 //left
-- (void)insertLeftLineWithScroll:(XYScrollView *)sv{
+- (void)insertLeftLineWithScroll:(XYScrollView *)sv edgeW:(CGFloat)edgeW{
     XYLine *line = [[XYLine alloc] init];
-    line.startPoint = CGPointMake(sv.origin.x + XYBoundaryMarignLine, sv.origin.y + XYBoundaryMarignLine);//sv.origin;
-    line.endPoint = CGPointMake(sv.x + XYBoundaryMarignLine, CGRectGetMaxY(sv.frame) - XYBoundaryMarignLine);
+    //起点
+    CGFloat startY;
+    if (CGRectGetMaxY(sv.frame) + XYBoundaryMarignLine + 1 > self.height) {//靠底部
+        if (sv.y == 0) {//顶部与容器View的顶部一致
+            startY = XYBoundaryMarignLine;
+        }else{
+            startY = sv.y;
+        }
+    }else{
+        startY = sv.y + XYBoundaryMarignLine;
+    }    line.startPoint = CGPointMake(sv.x  - edgeW / 2, startY);//sv.origin;
+    //终点
+    CGFloat endY;
+    if (sv.y == 0 && CGRectGetMaxY(sv.frame) != self.height) {//顶部与容器View的顶部一致
+        endY = CGRectGetMaxY(sv.frame);
+    }else{
+        endY = CGRectGetMaxY(sv.frame) - XYBoundaryMarignLine;
+    }
+    
+    line.endPoint = CGPointMake(sv.x - edgeW / 2, endY);
     [_lines addObject:line];
 }
 #pragma mark - 处理手势,修改模板的frame
@@ -679,14 +716,17 @@ typedef enum{
     //获取上下文
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
-    [_currentColor set];
+    
     CGContextSetLineWidth(ctx, _currentWidth);
     
     for (XYLine *line in self.lines) {
         
-        if (_templateBorderStyle == TemplateBorderStyleNone) {//虚线
-            CGFloat lengths[] = {5, 5};
-            CGContextSetLineDash(ctx, 0, lengths, 2);
+        if (_templateBorderStyle == TemplateBorderStyleNone) {//虚线 or 无边框
+            [[UIColor clearColor] set];
+//            CGFloat lengths[] = {5, 5};
+//            CGContextSetLineDash(ctx, 0, lengths, 2);
+        }else{
+            [_currentColor set];
         }
         
         CGContextMoveToPoint(ctx, line.startPoint.x, line.startPoint.y);
@@ -714,7 +754,6 @@ typedef enum{
     NSInteger templateIndex = [noti.userInfo[XYSelectedTemplate] integerValue];
     if (templateIndex != _templateIndex) {
         [self setTemplateIndex:templateIndex];
-        XYLog(@"2 ---- %ld", _templateIndex);
     }
     
 }

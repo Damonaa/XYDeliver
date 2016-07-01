@@ -71,4 +71,8 @@
         [self.delegate toolBarView:self didClickBtnAtIndex:btn.tag];
     }
 }
+
++ (void)hiden{
+    
+}
 @end

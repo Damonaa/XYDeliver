@@ -25,6 +25,11 @@
  */
 @property (nonatomic, weak) XYImageView *imageView;
 
+/**
+ *  当前选中的宽度
+ */
+@property (nonatomic, assign) CGFloat currentWidth;
+
 
 @end
 
@@ -36,18 +41,20 @@
     if (self) {
         
         [self setupAllChildView];
-        
+        _currentWidth = 5;
+        //监听选中的线宽的变化
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchSelectedWidth:) name:XYSwitchSelectedWidth object:nil];
     }
     return self;
 }
 
-#warning background color
+//#warning background color
 - (void)setupAllChildView{
     UIScrollView *containScrollView = [[UIScrollView alloc] init];
     [self addSubview:containScrollView];
     self.containScrollView = containScrollView;
 
-//    containScrollView.backgroundColor = [UIColor magentaColor];
+//    containScrollView.backgroundColor = [UIColor colorWithRed:0.136 green:1.000 blue:0.260 alpha:0.430];
     
     containScrollView.delegate = self;
     containScrollView.maximumZoomScale = XYMaxScale;
@@ -88,13 +95,45 @@
 
 //布局子控件位置
 - (void)layoutSubviews{
-    [super layoutSubviews];
-    CGFloat svMargin = 5 + XYBoundaryMarignLine;
-    self.containScrollView.frame = CGRectMake(svMargin, svMargin, self.width - svMargin * 2, self.height - svMargin * 2);
+    [super layoutSubviews]; 
+    //父视图
+    UIView *superView = self.superview;
+    
+    CGFloat csvX;
+    CGFloat csvY;
+    CGFloat csvW;
+    CGFloat csvH;
+    
+    CGFloat svMargin = _currentWidth + XYBoundaryMarignLine;
+    //宽
+    if (self.width < superView.width) {
+        csvW = self.width - svMargin - _currentWidth;
+    }else{
+        csvW = self.width - svMargin * 2;
+    }
+    //高
+    if (self.height < superView.height) {
+        csvH = self.height - svMargin - _currentWidth;
+    }else{
+        csvH = self.height - svMargin * 2;
+    }
+    
+    //X
+    if (self.x == 0) {
+        csvX = svMargin;
+    }else{
+        csvX = _currentWidth;
+    }
+    //Y
+    if (self.y == 0) {
+        csvY = svMargin;
+    }else{
+        csvY = _currentWidth;
+    }
+    self.containScrollView.frame = CGRectMake(csvX, csvY, csvW, csvH);
     _imageView.frame = _containScrollView.bounds;
 
-    
-    CGFloat textMagin = 10 + XYBoundaryMarignLine;
+    CGFloat textMagin = _currentWidth * 2 + XYBoundaryMarignLine;
     CGRect textRect = CGRectMake(textMagin, textMagin, self.width - textMagin * 2, self.height - textMagin * 2);
     _textView.frame = textRect;
     _verticalTextView.frame = textRect;
@@ -104,7 +143,6 @@
 - (void)setImage:(UIImage *)image{
     _image = image;
     _imageView.image = image;
-
     if (image == nil) {
         _imageView.hidden = YES;
     }else{
@@ -132,4 +170,13 @@
                                     scrollView.contentSize.height * 0.5 + offsetY);
 }
 
+#pragma mark - 监听切换线宽
+- (void)switchSelectedWidth:(NSNotification *)noti{
+    NSInteger lineW = [noti.userInfo[XYSwitchSelectedWidth] integerValue];
+    self.currentWidth = lineW + 3;
+    [self layoutSubviews];
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

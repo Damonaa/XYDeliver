@@ -34,7 +34,7 @@
 - (void)setupChildView{
     
 }
-//创建子控件，赋值
+//创建子控件，赋值 布局
 - (void)setPreviews:(NSArray *)previews{
     _previews = previews;
     
@@ -76,12 +76,6 @@
     preview.selected = YES;
     self.selectedPreview = preview;
 }
-
-//布局子控件位置
-- (void)layoutSubviews{
-    [super layoutSubviews];
-}
-
 
 - (void)dealloc{
     XYLog(@"XYPreviewsView.h 销毁");
