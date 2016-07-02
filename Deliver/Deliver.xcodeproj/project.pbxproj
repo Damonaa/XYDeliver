@@ -19,6 +19,7 @@
 		488EB7BB1D132B2000B10936 /* XYFontCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 488EB7BA1D132B2000B10936 /* XYFontCell.m */; };
 		48986A0E1D17EC3900A3A724 /* XYTextSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48986A0D1D17EC3900A3A724 /* XYTextSettingView.m */; };
 		489E8F6F1D084D1000A7647B /* XYVerticalTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 489E8F6E1D084D1000A7647B /* XYVerticalTextView.m */; };
+		48A9DB0E1D266610004791EC /* ImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A9DB0D1D266610004791EC /* ImageUtil.m */; };
 		48AA8DFA1D14D39900DB4DE5 /* NSString+XY.m in Sources */ = {isa = PBXBuildFile; fileRef = 48AA8DF91D14D39900DB4DE5 /* NSString+XY.m */; };
 		48AFA8381D22F33E00CB7D80 /* XYShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 48AFA8371D22F33E00CB7D80 /* XYShareTool.m */; };
 		48B5EC6E1D1586E900DE6884 /* XYFontTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B5EC6D1D1586E900DE6884 /* XYFontTool.m */; };
@@ -141,6 +142,9 @@
 		48986A0D1D17EC3900A3A724 /* XYTextSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTextSettingView.m; sourceTree = "<group>"; };
 		489E8F6D1D084D1000A7647B /* XYVerticalTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYVerticalTextView.h; sourceTree = "<group>"; };
 		489E8F6E1D084D1000A7647B /* XYVerticalTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYVerticalTextView.m; sourceTree = "<group>"; };
+		48A9DB0B1D266610004791EC /* ColorMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMatrix.h; sourceTree = "<group>"; };
+		48A9DB0C1D266610004791EC /* ImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtil.h; sourceTree = "<group>"; };
+		48A9DB0D1D266610004791EC /* ImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtil.m; sourceTree = "<group>"; };
 		48AA8DF81D14D39900DB4DE5 /* NSString+XY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XY.h"; sourceTree = "<group>"; };
 		48AA8DF91D14D39900DB4DE5 /* NSString+XY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XY.m"; sourceTree = "<group>"; };
 		48AFA8361D22F33E00CB7D80 /* XYShareTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYShareTool.h; sourceTree = "<group>"; };
@@ -338,6 +342,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		48A9DB0A1D266610004791EC /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				48A9DB0B1D266610004791EC /* ColorMatrix.h */,
+				48A9DB0C1D266610004791EC /* ImageUtil.h */,
+				48A9DB0D1D266610004791EC /* ImageUtil.m */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
 		48AFA8351D22F32B00CB7D80 /* ShareTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +520,7 @@
 		48CF7E601CFB2E03003D00FC /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				48A9DB0A1D266610004791EC /* Filter */,
 				48CD7B141D147E6400B59071 /* Reachablilty */,
 				48FCDBD21D01DC410042DC8F /* TZImagePickerController */,
 				48CF7E611CFB2E03003D00FC /* Category */,
@@ -952,6 +967,7 @@
 				48CD7B1F1D14805400B59071 /* XYCircleProgress.m in Sources */,
 				48FCDC0B1D01DC410042DC8F /* TZPhotoPreviewCell.m in Sources */,
 				48CF7E691CFB2E03003D00FC /* AppDelegate.m in Sources */,
+				48A9DB0E1D266610004791EC /* ImageUtil.m in Sources */,
 				48C388861CFCC2F2004446C8 /* XYColorBtn.m in Sources */,
 				48E09EBB1D1A8DE8007D37A4 /* XYPreviewsView.m in Sources */,
 				48FCDC0C1D01DC410042DC8F /* TZPhotoPreviewController.m in Sources */,

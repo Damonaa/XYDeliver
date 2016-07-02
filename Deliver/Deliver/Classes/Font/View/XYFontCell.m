@@ -53,7 +53,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         //设置子控件
         [self setupAllChildView];
-
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -74,7 +74,7 @@
     XYCircleProgress *circleProgress = [[XYCircleProgress alloc] init];
     [self.contentView addSubview:circleProgress];
     self.circleProgress = circleProgress;
-    circleProgress.backgroundColor = [UIColor lightGrayColor];
+    circleProgress.backgroundColor = [UIColor clearColor];
     circleProgress.hidden = YES;
 }
 
@@ -125,6 +125,9 @@
         
         if (status == 0) {//无网络
             XYLog(@"无网络");
+            if (_fontDownloadError) {
+                _fontDownloadError();
+            }
             return;
         }
         if (_font.simplifiedNormalfaced) {//简体常规体
@@ -221,10 +224,18 @@
             dispatch_async( dispatch_get_main_queue(), ^ {
                 //                _fProgressView.hidden = YES;
                 NSLog(@"下载出错Download error: %@", error);
+                if (!_fontDownloadError) {
+                    _fontDownloadError();
+                }
             });
         }
         
         return (bool)YES;
     });
 }
+
+////去除高亮
+//- (void)setHighlighted:(BOOL)highlighted{
+//    
+//}
 @end

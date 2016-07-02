@@ -28,14 +28,14 @@
     
 //    draw string
     
-    CGFloat textW = 30;
-    CGFloat textH = 20;
-    CGFloat textX = (rect.size.width - textW) / 2;
-    CGFloat textY = (rect.size.height - textH) / 2;
-    
-    NSString *text = [NSString stringWithFormat:@"%.02f",self.progress];
-    
-    [text drawInRect:CGRectMake(textX, textY, textW, textH) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]}];
+//    CGFloat textW = 30;
+//    CGFloat textH = 20;
+//    CGFloat textX = (rect.size.width - textW) / 2;
+//    CGFloat textY = (rect.size.height - textH) / 2;
+//    
+//    NSString *text = [NSString stringWithFormat:@"%.02f",self.progress];
+//    
+//    [text drawInRect:CGRectMake(textX, textY, textW, textH) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]}];
     
 }
 

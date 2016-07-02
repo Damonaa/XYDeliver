@@ -38,11 +38,17 @@
             XYFont *font5 = [XYFont fontWithName:@"雅痞" simplifiedNormalfaced:@"YuppySC-Regular" simplifiedBoldfaced:nil traditionalNormalfaced:@"YuppyTC-Regular" traditionalBoldfaced:nil typeCount:2 fontTag:4];
             [_fonts addObject:font5];
             
-            XYFont *font6 = [XYFont fontWithName:@"Andale Mono Regular" simplifiedNormalfaced:@"AndaleMonoAndaleMono" simplifiedBoldfaced:nil traditionalNormalfaced:nil traditionalBoldfaced:nil typeCount:2 fontTag:5];
+            XYFont *font6 = [XYFont fontWithName:@"魏碑" simplifiedNormalfaced:@"Weibei-SC-Bold" simplifiedBoldfaced:@"Weibei-SC-Bold" traditionalNormalfaced:@"Weibei-TC-Bold" traditionalBoldfaced:@"Weibei-TC-Bold" typeCount:4 fontTag:5];
             [_fonts addObject:font6];
             
-            XYFont *font7 = [XYFont fontWithName:@"Brush Script Std Medium" simplifiedNormalfaced:@"BrushScriptStd" simplifiedBoldfaced:nil traditionalNormalfaced:nil traditionalBoldfaced:nil typeCount:2 fontTag:6];
+            XYFont *font7 = [XYFont fontWithName:@"娃娃体" simplifiedNormalfaced:@"DFWaWaSC-W5" simplifiedBoldfaced:nil traditionalNormalfaced:@"DFWaWaTC-W5" traditionalBoldfaced:nil typeCount:2 fontTag:6];
             [_fonts addObject:font7];
+            
+//            XYFont *font6 = [XYFont fontWithName:@"Andale Mono Regular" simplifiedNormalfaced:@"AndaleMonoAndaleMono" simplifiedBoldfaced:nil traditionalNormalfaced:nil traditionalBoldfaced:nil typeCount:2 fontTag:5];
+//            [_fonts addObject:font6];
+//            
+//            XYFont *font7 = [XYFont fontWithName:@"Brush Script Std Medium" simplifiedNormalfaced:@"BrushScriptStd" simplifiedBoldfaced:nil traditionalNormalfaced:nil traditionalBoldfaced:nil typeCount:2 fontTag:6];
+//            [_fonts addObject:font7];
             //写入沙盒
             [NSKeyedArchiver archiveRootObject:_fonts toFile:[NSString fontArrayDir]];
         }
@@ -77,17 +83,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     XYFontCell *fontCell = [XYFontCell fontCellWithTableView:tableView];
     
+    fontCell.fontDownloadError = ^{
+        //下载错误
+        [self downloadFontError];
+    };
+    
     fontCell.font = self.fonts[indexPath.row];
     
     return fontCell;
 }
 
-//- (NSString *)fontArrayDir{
-//    NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-//    NSString *fontDir = [path stringByAppendingPathComponent:@"fontArray.acr"];
-//    return fontDir;
-//}
-
+//下载错误
+- (void)downloadFontError{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你家网络有问题哎，等会再试试哈！" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"知道啦" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:action];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
 
 - (void)dealloc{
     XYLog(@"销毁字体VC");

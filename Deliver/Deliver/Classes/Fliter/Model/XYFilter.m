@@ -25,6 +25,14 @@
 + (instancetype)filterWithOriginalImageData:(NSData *)imageData title:(NSString *)title{
     XYFilter *filter = [[self alloc] init];
     filter.imageData = imageData;
+    filter.title = title;
+    return filter;
+}
+
++ (instancetype)filterWithOriginalImage:(UIImage *)originalImage title:(NSString *)title{
+    XYFilter *filter = [[self alloc] init];
+    filter.originalImage = originalImage;
+    filter.title = title;
     return filter;
 }
 @end

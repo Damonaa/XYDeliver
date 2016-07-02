@@ -35,4 +35,6 @@
 
 + (instancetype)filterWithOriginalImage:(UIImage *)originalImage filter:(GPUImageFilter *)imageFilter red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue title:(NSString *)title;
 + (instancetype)filterWithOriginalImageData:(NSData *)imageData title:(NSString *)title;
+
++ (instancetype)filterWithOriginalImage:(UIImage *)originalImage title:(NSString *)title;
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class XYTextView, XYVerticalTextView, XYScrollView;
+@class XYTextView, XYVerticalTextView, XYScrollView, XYImageView;
 
 typedef enum{
     TapLocationTop,
@@ -42,6 +42,10 @@ typedef void(^CurrentSVBlock)(XYScrollView *scrollView);
  *  展示竖文本的视图
  */
 @property (nonatomic, weak) XYVerticalTextView *verticalTextView;
+/**
+ *  展示图片
+ */
+@property (nonatomic, weak) XYImageView *imageView;
 /**
  *  当前选择的XYScrollViewBlock
  */

@@ -27,6 +27,7 @@
 #import "XYFilterViewController.h"
 #import "XYCoverView.h"
 #import "XYShareTool.h"
+#import "XYImageView.h"
 
 @interface XYMainViewController ()<XYToolOptionsViewDelegate, XYColorViewDelegate, XYColorBtnDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, TZImagePickerControllerDelegate,XYKeyboardToolBarViewDelegate, XYTextSettingViewDelegate, XYCoverViewDelegate>
 /**
@@ -67,6 +68,10 @@
  */
 @property (nonatomic, weak) XYTextSettingView *textSettingView;
 /**
+ * 滤镜控制器
+ */
+@property (nonatomic, strong) XYFilterViewController *filterVC;
+/**
  *  是否是在是设置文字的颜色和size， 默认为NO
  */
 //@property (nonatomic, assign, getter=isSettingText) BOOL settingText;
@@ -82,6 +87,13 @@
         _fontVC = [[XYFontViewController alloc] init];
     }
     return _fontVC;
+}
+
+- (XYFilterViewController *)filterVC{
+    if (!_filterVC) {
+        _filterVC = [[XYFilterViewController alloc] init];
+    }
+    return _filterVC;
 }
 - (XYColorView *)colorView{
     if (!_colorView) {
@@ -206,12 +218,34 @@
         XYTemplateViewController *templateVC = [[XYTemplateViewController alloc] init];
         [self presentViewController:templateVC animated:YES completion:nil];
     }else if (btn.tag == 4){//滤镜
-        XYFilterViewController *filterVC = [[XYFilterViewController alloc] init];
         NSData *temp = UIImagePNGRepresentation([self clipScreen]);
-        filterVC.originalImageData = temp;
-//        filterVC.originalImage = [self clipScreen];
-//        [self.navigationController pushViewController:filterVC animated:YES];
-        [self presentViewController:filterVC animated:YES completion:nil];
+        self.filterVC.originalImageData = temp;
+//        self.filterVC.originalImage = [self clipScreen];
+        [self presentViewController:self.filterVC animated:YES completion:nil];
+    }else if (btn.tag == 5){//清空
+        //移除内存中的图片
+        if (_containerView.images.count > 0) {
+            [_containerView.images removeAllObjects];
+        }
+        
+        for (XYScrollView *sv in _containerView.subviews) {
+            if ([sv isKindOfClass:[XYScrollView class]]) {
+                if (!sv.textView.isHidden) {//横文本
+                    sv.textView.hidden = YES;
+                    sv.textView.text = nil;
+                }else if (!sv.verticalTextView.isHidden){//竖文本
+                    sv.verticalTextView.hidden = YES;
+                    for (XYTextView *tv in sv.verticalTextView.textViews) {
+                        tv.text = nil;
+                    }
+                }else if (!sv.imageView.isHidden){//图片
+                    sv.imageView.hidden = YES;
+                    sv.image = nil;
+                    
+                }
+            }
+            
+        }
     }
 }
 //截取图片

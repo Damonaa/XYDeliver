@@ -20,10 +20,7 @@
  *  放置图片的容器
  */
 @property (nonatomic, weak) UIScrollView *containScrollView;
-/**
- *  展示图片
- */
-@property (nonatomic, weak) XYImageView *imageView;
+
 
 /**
  *  当前选中的宽度
@@ -107,13 +104,23 @@
     CGFloat svMargin = _currentWidth + XYBoundaryMarignLine;
     //宽
     if (self.width < superView.width) {
-        csvW = self.width - svMargin - _currentWidth;
+        if (self.x != 0 && CGRectGetMaxX(self.frame) != superView.width) {//不在左边和右边
+            csvW = self.width - _currentWidth * 2;
+        }else{
+            csvW = self.width - svMargin - _currentWidth;
+        }
+        
     }else{
         csvW = self.width - svMargin * 2;
     }
     //高
     if (self.height < superView.height) {
-        csvH = self.height - svMargin - _currentWidth;
+        if (self.y != 0 && CGRectGetMaxY(self.frame) != superView.height) {
+            csvH = self.height - _currentWidth * 2;
+        }else{
+            csvH = self.height - svMargin - _currentWidth;
+        }
+        
     }else{
         csvH = self.height - svMargin * 2;
     }

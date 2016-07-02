@@ -11,12 +11,12 @@
 @class Reachability;
 
 
-typedef enum : NSInteger {
-    XYNotReachable = 0,
-    XYReachableViaWiFi,
-    XYReachableViaWWAN
-} XYNetworkStatus;
-
+//typedef enum : NSInteger {
+//    XYNotReachable = 0,
+//    XYReachableViaWiFi,
+//    XYReachableViaWWAN
+//} XYNetworkStatus;
+//
 @interface XYReachabilityTool : NSObject
 
 + (NSInteger)netWorkStatus;

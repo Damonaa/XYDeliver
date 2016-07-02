@@ -54,7 +54,7 @@
     [self addMenuButtonWithBGName:@"tool_btn_bore_rectangle__default" hlImageName:nil tag:2 title:@"有边框"];
     [self addMenuButtonWithBGName:@"tool_btn_scale_1_1default" hlImageName:@"tool_btn_scale_btn_1_1pressed" tag:3 title:@"1:1"];
     [self addMenuButtonWithBGName:@"tool_btn_effects_pressed" hlImageName:@"tool_btn_effects_default" tag:4 title:@"滤镜"];
-//    [self addMenuButtonWithBGName:@"tool_btn_text_default" hlImageName:nil tag:5 title:@"字体"];
+    [self addMenuButtonWithBGName:@"reset_defult" hlImageName:@"reset_pressed" tag:5 title:@"清空"];
     
     [self bringSubviewToFront:mainBtn];
 }

@@ -16,6 +16,7 @@
 #import "XYFilterToolBar.h"
 #import "XYPreviewsView.h"
 #import "XYCoverView.h"
+#import "XYPreview.h"
 
 #import "UMSocialSinaSSOHandler.h"
 #import "UMSocial.h"
@@ -42,10 +43,7 @@
  */
 //@property (nonatomic, weak) XYCoverView *coverView;
 
-/**
- *  原始图片
- */
-@property (nonatomic, strong) UIImage *originalImage;
+
 
 @end
 
@@ -63,30 +61,34 @@
     if (!_previews) {
         _previews = [NSMutableArray array];
 
-        XYFilter *filter0 = [XYFilter filterWithOriginalImage:self.originalImage filter:nil red:0 green:0 blue:0 title:@"原图"];
+        XYFilter *filter0 = [XYFilter filterWithOriginalImage:self.originalImage title:@"原图"];
         [_previews addObject:filter0];
-        GPUImageSketchFilter *sketchFilter = [[GPUImageSketchFilter alloc] init];
-        XYFilter *filter1 = [XYFilter filterWithOriginalImage:_originalImage filter:sketchFilter red:0 green:0 blue:0 title:@"素描"];
+        
+        XYFilter *filter1 = [XYFilter filterWithOriginalImage:_originalImage title:@"LOMO"];
         [_previews addObject:filter1];
+        
+        XYFilter *filter2 = [XYFilter filterWithOriginalImage:_originalImage title:@"黑白"];
+        [_previews addObject:filter2];
+
+        XYFilter *filter3 = [XYFilter filterWithOriginalImage:_originalImage title:@"复古"];
+        [_previews addObject:filter3];
+
+        XYFilter *filter4 = [XYFilter filterWithOriginalImage:_originalImage title:@"哥特"];
+        [_previews addObject:filter4];
 //
-//        GPUImageMonochromeFilter *monochromeFilter = [[GPUImageMonochromeFilter alloc] init];
-//        XYFilter *filter2 = [XYFilter filterWithOriginalImage:_originalImage filter:monochromeFilter red:0 green:0 blue:0 title:@"黑白照片"];
-//        [_previews addObject:filter2];
-//
-//        GPUImageRGBFilter *rgbFilter = [[GPUImageRGBFilter alloc] init];
-//        XYFilter *filter3 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:0.8 green:1.0 blue:1.0 title:@"滤镜3"];
-//        [_previews addObject:filter3];
-//        
-//        XYFilter *filter4 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:1.0 green:0.8 blue:1.0 title:@"滤镜4"];
-//        [_previews addObject:filter4];
-//        
-//        XYFilter *filter5 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:1.0 green:1.0 blue:0.8 title:@"滤镜5"];
+//        XYFilter *filter5 = [XYFilter filterWithOriginalImage:_originalImage title:@"锐化"];
 //        [_previews addObject:filter5];
-//        
-//        XYFilter *filter6 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:0.9 green:0.9 blue:0.9 title:@"滤镜6"];
-//        [_previews addObject:filter6];
         
+        XYFilter *filter6 = [XYFilter filterWithOriginalImage:_originalImage title:@"淡雅"];
+        [_previews addObject:filter6];
         
+//        XYFilter *filter7 = [XYFilter filterWithOriginalImage:_originalImage title:@"酒红"];
+//        [_previews addObject:filter7];
+        
+//        XYFilter *filter8 = [XYFilter filterWithOriginalImage:_originalImage title:@"清宁"];
+//        [_previews addObject:filter8];
+
+ 
     }
     return _previews;
 }
@@ -95,7 +97,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setupChildView];
+    
     
     //监听图片的点击
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeDisplayImage:) name:XYTapPreviewImage object:nil];
@@ -103,6 +105,28 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareSucceed) name:XYShareSucceed object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self setupChildView];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.previews removeAllObjects];
+    self.previews = nil;
+    _originalImage = nil;
+    //清空图片
+    for (XYPreview *preview in _previewsView.subviews) {
+        for (UIImageView *iv in preview.subviews) {
+            if ([iv isKindOfClass:[UIImageView class]]) {
+                iv.image = nil;
+            }
+        }
+    }
+    _displayImageView.image = nil;
+}
 
 - (void)setupChildView{
     //展示的ImageView
@@ -180,10 +204,6 @@
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    self.originalImage = nil;
-//    [_previews removeAllObjects];
-//    _previewsView = nil;
-//    _displayImageView.image = nil;
     XYLog(@"XYFilterViewController.h 销毁");
 }
 

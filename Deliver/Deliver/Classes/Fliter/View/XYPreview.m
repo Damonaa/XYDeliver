@@ -8,7 +8,10 @@
 
 #import "XYPreview.h"
 #import "XYFilter.h"
-#import "GPUImage.h"
+//#import "GPUImage.h"
+
+#import "ImageUtil.h"
+#import "ColorMatrix.h"
 
 @interface XYPreview ()
 
@@ -66,24 +69,30 @@
     _previewImageView.width = self.width;
     _previewImageView.height = self.height - _previewName.height - 5;
     //过滤图片
-    if ([filterItem.imageFilter isKindOfClass:[GPUImageRGBFilter class]]) {//reb
-        GPUImageRGBFilter *filter = [[GPUImageRGBFilter alloc] init];
-        filter.red = filterItem.red;
-        filter.green = filterItem.green;
-        filter.blue = filterItem.blue;
-        _previewImageView.image = [filter imageByFilteringImage:filterItem.originalImage];
-    }else if ([filterItem.imageFilter isKindOfClass:[GPUImageMonochromeFilter class]]){//黑白照
-        
-        GPUImageMonochromeFilter *filter = [[GPUImageMonochromeFilter alloc] init];
-        _previewImageView.image = [filter imageByFilteringImage:filterItem.originalImage];
-    }else if ([filterItem.imageFilter isKindOfClass:[GPUImageSketchFilter class]]){//素描
-        GPUImageSketchFilter *filter = [[GPUImageSketchFilter alloc] init];
-        _previewImageView.image = [filter imageByFilteringImage:filterItem.originalImage];
-    }else{//原图
-        _previewImageView.image = filterItem.originalImage;
+    UIImage *preImage;
+    if ([filterItem.title isEqualToString:@"原图"]) {
+        preImage = filterItem.originalImage;
+    }else if ([filterItem.title isEqualToString:@"LOMO"]){
+        preImage = [ImageUtil imageWithImage:filterItem.originalImage withColorMatrix:colormatrix_lomo];
+    }else if ([filterItem.title isEqualToString:@"黑白"]){
+        preImage = [ImageUtil imageWithImage:filterItem.originalImage withColorMatrix:colormatrix_heibai];
+    }else if ([filterItem.title isEqualToString:@"复古"]){
+        preImage = [ImageUtil imageWithImage:filterItem.originalImage withColorMatrix:colormatrix_huajiu];
+    }else if ([filterItem.title isEqualToString:@"哥特"]){
+        preImage = [ImageUtil imageWithImage:filterItem.originalImage withColorMatrix:colormatrix_gete];
+    }else if ([filterItem.title isEqualToString:@"锐化"]){
+        preImage = [ImageUtil imageWithImage:filterItem.originalImage withColorMatrix:colormatrix_ruise];
+    }else if ([filterItem.title isEqualToString:@"淡雅"]){
+        preImage = [ImageUtil imageWithImage:filterItem.originalImage withColorMatrix:colormatrix_danya];
+    }else if ([filterItem.title isEqualToString:@"酒红"]){
+        preImage = [ImageUtil imageWithImage:filterItem.originalImage withColorMatrix:colormatrix_jiuhong];
+    }else if ([filterItem.title isEqualToString:@"清宁"]){
+        preImage = [ImageUtil imageWithImage:filterItem.originalImage withColorMatrix:colormatrix_qingning];
     }
+    _previewImageView.image = preImage;
     
 }
+
 //布局子控件位置
 - (void)layoutSubviews{
     [super layoutSubviews];

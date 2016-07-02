@@ -17,19 +17,21 @@
 
 @implementation XYReachabilityTool
 
-static Reachability *hostReachability;
-static NetworkStatus netStatus;
-
-+ (void)initialize{
-    NSString *remoteHostName = @"www.baidu.com";
-    hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
-    [hostReachability startNotifier];
-    netStatus = [hostReachability currentReachabilityStatus];
-//    [self updateInterfaceWithReachability:hostReachability];
-}
+//static Reachability *hostReachability;
+//static NetworkStatus netStatus;
+//
+//+ (void)initialize{
+////    NSString *remoteHostName = @"www.baidu.com";
+////    hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+////    [hostReachability startNotifier];
+////    netStatus = [hostReachability currentReachabilityStatus];
+////    [self updateInterfaceWithReachability:hostReachability];
+//}
 
 + (NSInteger)netWorkStatus{
-    switch (netStatus)
+    
+    Reachability *reachability = [Reachability reachabilityWithHostName:@"www.baidu.com"];  // 测试服务器状态
+    switch ([reachability currentReachabilityStatus])
     {
         case NotReachable:{
             return 0;
@@ -45,8 +47,6 @@ static NetworkStatus netStatus;
             break;
         }
     }
-    
-
     return 0;
 }
 

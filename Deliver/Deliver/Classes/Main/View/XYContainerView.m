@@ -247,10 +247,7 @@ typedef enum{
     [_scrollView3 removeFromSuperview];
     
     _scrollView1.frame = CGRectMake(0, 0, self.width, self.height / 2);
-    
-    
     _scrollView2.frame = CGRectMake(0, self.height / 2, self.width,self.height / 2);
-    
 }
 
 - (void)templateTwo{
@@ -261,9 +258,6 @@ typedef enum{
     
     _scrollView1.frame = CGRectMake(0, 0, self.width / 2, self.height);
     _scrollView2.frame = CGRectMake(self.width / 2, 0, self.width / 2, self.height);
-    
-//    scroll1.backgroundColor = [UIColor lightGrayColor];
-//    scroll2.backgroundColor = [UIColor magentaColor];
 }
 - (void)templateThree{
     
@@ -274,9 +268,6 @@ typedef enum{
     _scrollView1.frame = CGRectMake(0, 0, self.width / 2, self.height / 2);
     _scrollView2.frame = CGRectMake(0, self.height / 2, self.width / 2, self.height / 2);
     _scrollView3.frame = CGRectMake(self.width / 2, 0, self.width / 2, self.height);
-//    scroll1.backgroundColor = [UIColor lightGrayColor];
-//    scroll2.backgroundColor = [UIColor magentaColor];
-//    scroll3.backgroundColor = [UIColor orangeColor];
 }
 - (void)templateFour{
     
@@ -288,10 +279,6 @@ typedef enum{
     _scrollView1.frame = CGRectMake(0, 0, self.width, self.height / 2);
     _scrollView2.frame = CGRectMake(0, self.height / 2, self.width / 2, self.height / 2);
     _scrollView3.frame = CGRectMake(self.width / 2, self.height / 2, self.width / 2, self.height / 2);
-    
-//    scroll1.backgroundColor = [UIColor lightGrayColor];
-//    scroll2.backgroundColor = [UIColor magentaColor];
-//    scroll3.backgroundColor = [UIColor orangeColor];
 }
 - (void)templateFive{
     
@@ -302,10 +289,6 @@ typedef enum{
     _scrollView1.frame = CGRectMake(0, 0, self.width / 2, self.height);
     _scrollView2.frame = CGRectMake(self.width / 2, 0, self.width / 2, self.height  / 2);
     _scrollView3.frame = CGRectMake(self.width / 2, self.height / 2, self.width / 2, self.height / 2);
-    
-//    scroll1.backgroundColor = [UIColor lightGrayColor];
-//    scroll2.backgroundColor = [UIColor magentaColor];
-//    scroll3.backgroundColor = [UIColor orangeColor];
 }
 - (void)templateSix{
     
@@ -340,7 +323,6 @@ typedef enum{
 //创建一个UIscrollView
 - (XYScrollView *)addOneScrollView{
     XYScrollView *scroll = [[XYScrollView alloc] init];
-//    [self addSubview:scroll];
     scroll.tag = self.scrollViews.count;
     [self.scrollViews addObject:scroll];
 //    scroll.delegate = self;
@@ -507,6 +489,7 @@ typedef enum{
 }
 //调整比邻的视图的frame
 - (void)modifyCloseScrollViewWithCurrentSV:(XYScrollView *)currentSV move:(CGPoint)move{
+    
     if (currentSV.tapLocation == TapLocationTop) {
         //选中视图的顶部，则比邻的视图的最大Y值等于选中视图的y值
         for (XYScrollView *scv in _scrollViews) {
@@ -577,6 +560,7 @@ typedef enum{
             }
         }
     }
+    
 }
 
 //修改当前scroll的frame
@@ -662,17 +646,12 @@ typedef enum{
     NSString *scaleStr = noti.userInfo[XYTemplateChangeScale];
     XYLog(@"%@", scaleStr);
     if ([scaleStr isEqualToString:@"1:1"]) {
-        //self.height = XYScreenWidth;
         self.templateScale = TemplateScaleOneToOne;
     }else if ([scaleStr isEqualToString:@"4:3"]){
-//        self.height = XYScreenWidth * 3 / 4;
         self.templateScale = TemplateScaleFourToThree;
     }else{
-//        self.height = XYScreenWidth * 4 / 3;
         self.templateScale = TemplateScaleThreeToFour;
     }
-//    self.y = (XYScreenHeight - self.height) / 2;
-    
     //重画模板
     [self setTemplateIndex:_templateIndex];
     //重新为imageview赋值
@@ -685,8 +664,15 @@ typedef enum{
 //设置模板样式比例 frame
 - (void)setTemplateScale:(TemplateScale)templateScale{
     _templateScale = templateScale;
-    CGFloat marginCont = 15;
+    
+    CGFloat marginCont;// = 20;
+    if (XYScreenWidth == 320) {
+        marginCont = 20;
+    }else if (XYScreenWidth == 375 || XYScreenWidth == 414){
+        marginCont = 15;
+    }
     self.width = XYScreenWidth - marginCont;
+//    XYLog(@"容器的宽 --- %f", self.width);
     
     if (templateScale == TemplateScaleOneToOne) {//1:1
         self.height = self.width;
