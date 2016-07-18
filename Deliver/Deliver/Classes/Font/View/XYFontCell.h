@@ -10,18 +10,31 @@
 
 @class XYFont;
 
+typedef void(^FontDownloadSuccess)();
 typedef void(^FontDownloadError)();
+
+
 
 @interface XYFontCell : UITableViewCell
 
 @property (nonatomic, strong) XYFont *font;
 
-//下载错误block
+
+/**
+ *  下载错误block
+ */
 @property (nonatomic, copy) FontDownloadError fontDownloadError;
+/**
+ *  下载成功
+ */
+@property (nonatomic, copy) FontDownloadSuccess fontDownloadSuccess;
+
 
 /**
  *  创建自定义的cell
  */
 + (instancetype)fontCellWithTableView:(UITableView *)tableView;
+
+
 
 @end

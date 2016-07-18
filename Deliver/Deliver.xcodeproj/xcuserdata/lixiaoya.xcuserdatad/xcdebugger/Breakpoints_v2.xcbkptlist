@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYToolOptionsView.m"
-            timestampString = "486753453.250132"
+            timestampString = "490350467.972034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-showMenu:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "@implementation XYMainViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "-colorView:selcetedColor:mainBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYMenuView.m"
-            timestampString = "486719605.68483"
+            timestampString = "489866469.240261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "-colorView:selcetedWidth:mainBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "489863454.014272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "798"
-            endingLineNumber = "798"
+            startingLineNumber = "804"
+            endingLineNumber = "804"
             landmarkName = "-calculateEmptySV"
             landmarkType = "5">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "489863454.014272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "817"
-            endingLineNumber = "817"
+            startingLineNumber = "823"
+            endingLineNumber = "823"
             landmarkName = "-calculateEmptySV"
             landmarkType = "5">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "489863454.014272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "799"
-            endingLineNumber = "799"
+            startingLineNumber = "805"
+            endingLineNumber = "805"
             landmarkName = "-calculateEmptySV"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "489863454.014272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "796"
-            endingLineNumber = "796"
+            startingLineNumber = "802"
+            endingLineNumber = "802"
             landmarkName = "-calculateEmptySV"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "489863454.014272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "795"
-            endingLineNumber = "795"
+            startingLineNumber = "801"
+            endingLineNumber = "801"
             landmarkName = "-calculateEmptySV"
             landmarkType = "5">
             <Locations>
@@ -612,11 +612,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "489863454.014272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "764"
-            endingLineNumber = "764"
+            startingLineNumber = "770"
+            endingLineNumber = "770"
             landmarkName = "-showMenuViewOnScroolView:location:"
             landmarkType = "5">
          </BreakpointContent>
@@ -628,11 +628,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "489863454.014272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "759"
-            endingLineNumber = "759"
+            startingLineNumber = "765"
+            endingLineNumber = "765"
             landmarkName = "-tapScroll:"
             landmarkType = "5">
          </BreakpointContent>
@@ -644,11 +644,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
             landmarkName = "-selectedMenu:"
             landmarkType = "5">
          </BreakpointContent>
@@ -660,11 +660,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "-openPhotosAlbum"
             landmarkType = "5">
          </BreakpointContent>
@@ -676,11 +676,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "-selectedMenu:"
             landmarkType = "5">
          </BreakpointContent>
@@ -788,11 +788,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "490347058.75015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "889"
-            endingLineNumber = "889"
+            startingLineNumber = "896"
+            endingLineNumber = "896"
             landmarkName = "-selectedMenu:"
             landmarkType = "5">
          </BreakpointContent>
@@ -804,11 +804,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "490347058.75015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "880"
-            endingLineNumber = "880"
+            startingLineNumber = "887"
+            endingLineNumber = "887"
             landmarkName = "-selectedMenu:"
             landmarkType = "5">
          </BreakpointContent>
@@ -900,11 +900,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextView.m"
-            timestampString = "488132447.341808"
+            timestampString = "490342277.129397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-textViewDidChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -916,11 +916,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextView.m"
-            timestampString = "488132447.341808"
+            timestampString = "490342277.129397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "@implementation XYTextView"
             landmarkType = "3">
          </BreakpointContent>
@@ -932,11 +932,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextView.m"
-            timestampString = "488132447.341808"
+            timestampString = "490342277.129397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-init"
             landmarkType = "5">
          </BreakpointContent>
@@ -996,12 +996,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextView.m"
-            timestampString = "488132447.341808"
+            timestampString = "490342277.129397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-textViewShouldBeginEditing:"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-textViewDidChange:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1012,11 +1012,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "-transformKBToolBarWithNoti:kbToolBarHidden:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1028,11 +1028,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "-transformKBToolBarWithNoti:kbToolBarHidden:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1044,11 +1044,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "-transformKBToolBarWithNoti:kbToolBarHidden:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1060,11 +1060,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "-transformKBToolBarWithNoti:kbToolBarHidden:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1140,11 +1140,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
+            startingLineNumber = "490"
+            endingLineNumber = "490"
             landmarkName = "-toolBarView:didClickBtnAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1156,12 +1156,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextView.m"
-            timestampString = "488132447.341808"
+            timestampString = "490342277.129397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-textViewShouldBeginEditing:"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-textViewDidChange:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1172,11 +1172,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "526"
+            endingLineNumber = "526"
             landmarkName = "-endEditingAndReset"
             landmarkType = "5">
          </BreakpointContent>
@@ -1188,11 +1188,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341251.495661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "@implementation XYMainViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1204,11 +1204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341251.495661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-fontVC"
             landmarkType = "5">
          </BreakpointContent>
@@ -1220,11 +1220,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
             landmarkName = "-toolBarView:didClickBtnAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1236,11 +1236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
             landmarkName = "-toolBarView:didClickBtnAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1252,11 +1252,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "444"
-            endingLineNumber = "444"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "-toolBarView:didClickBtnAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1284,7 +1284,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Font/Controller/XYFontViewController.m"
-            timestampString = "489164426.527144"
+            timestampString = "489951027.353041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -1300,7 +1300,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Font/Controller/XYFontViewController.m"
-            timestampString = "489164426.527144"
+            timestampString = "489951027.353041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -1316,11 +1316,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "490347058.75015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "899"
-            endingLineNumber = "899"
+            startingLineNumber = "906"
+            endingLineNumber = "906"
             landmarkName = "-changeFont:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1332,11 +1332,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "490347058.75015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "907"
-            endingLineNumber = "907"
+            startingLineNumber = "914"
+            endingLineNumber = "914"
             landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
@@ -1348,11 +1348,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "490347058.75015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "900"
-            endingLineNumber = "900"
+            startingLineNumber = "907"
+            endingLineNumber = "907"
             landmarkName = "-changeFont:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1364,11 +1364,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Font/View/XYFontCell.m"
-            timestampString = "488131257.086417"
+            timestampString = "490346244.127861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-setFont:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1380,11 +1380,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYContainerView.m"
-            timestampString = "489164426.527144"
+            timestampString = "490347058.75015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "906"
-            endingLineNumber = "906"
+            startingLineNumber = "913"
+            endingLineNumber = "913"
             landmarkName = "@implementation XYContainerView"
             landmarkType = "3">
          </BreakpointContent>
@@ -1395,28 +1395,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Deliver/Classes/Font/View/XYFontCell.m"
-            timestampString = "489168502.678379"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-asynchronouslySetFontName:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "-keyboardDidShow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1428,11 +1412,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "-colorView:selcetedWidth:mainBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1444,11 +1428,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "-colorView:selcetedWidth:mainBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1460,11 +1444,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "-colorView:selcetedWidth:mainBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1476,11 +1460,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-colorView:selcetedWidth:mainBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1492,11 +1476,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-colorView:selcetedWidth:mainBtn:"
             landmarkType = "5">
             <Locations>
@@ -1540,11 +1524,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextView.m"
-            timestampString = "488132447.341808"
+            timestampString = "490342277.129397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-textViewDidChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1556,11 +1540,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextView.m"
-            timestampString = "488132447.341808"
+            timestampString = "490342277.129397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "-textView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1572,11 +1556,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextView.m"
-            timestampString = "488132447.341808"
+            timestampString = "490342277.129397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-textView:shouldChangeTextInRange:replacementText:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1588,11 +1572,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
             landmarkName = "-toolBarView:didClickBtnAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1604,11 +1588,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "566"
+            endingLineNumber = "566"
             landmarkName = "-setupTextSetting"
             landmarkType = "5">
          </BreakpointContent>
@@ -1620,11 +1604,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "534"
-            endingLineNumber = "534"
+            startingLineNumber = "572"
+            endingLineNumber = "572"
             landmarkName = "-setupTextSetting"
             landmarkType = "5">
          </BreakpointContent>
@@ -1636,11 +1620,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextSettingView.m"
-            timestampString = "488112452.392978"
+            timestampString = "490335638.178075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-layoutSubviews"
             landmarkType = "5">
          </BreakpointContent>
@@ -1652,11 +1636,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/View/XYTextSettingView.m"
-            timestampString = "488112569.497629"
+            timestampString = "490335638.178075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-clickAligmentBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1668,11 +1652,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Font/View/XYFontCell.m"
-            timestampString = "488132447.341808"
+            timestampString = "490346244.127861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-clickConditionBtn"
             landmarkType = "5">
          </BreakpointContent>
@@ -1684,11 +1668,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Main/Controller/XYMainViewController.m"
-            timestampString = "489170729.122842"
+            timestampString = "490341477.200125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
             landmarkName = "-textSettingView:didChangeFontSize:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1732,11 +1716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Fliter/View/XYPreview.m"
-            timestampString = "489082533.824331"
+            timestampString = "490331279.13074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "-setSelected:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1748,12 +1732,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deliver/Classes/Fliter/View/XYPreview.m"
-            timestampString = "489082533.824331"
+            timestampString = "490331279.13074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-dealloc"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-setSelected:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

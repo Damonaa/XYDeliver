@@ -12,6 +12,10 @@
 		4809B5641D04A5BC00269C49 /* UIImage+XY.m in Sources */ = {isa = PBXBuildFile; fileRef = 4809B5631D04A5BC00269C49 /* UIImage+XY.m */; };
 		483020E61D03573100800D97 /* XYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 483020E51D03573100800D97 /* XYTextView.m */; };
 		4830E9F61CFDE47F00841229 /* XYScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4830E9F51CFDE47F00841229 /* XYScrollView.m */; };
+		4850238C1D39DC25009E4A3C /* CustomFilter.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4850238B1D39DC25009E4A3C /* CustomFilter.fsh */; };
+		485023961D3A0320009E4A3C /* MBProgressHUD+CZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 485023921D3A0320009E4A3C /* MBProgressHUD+CZ.m */; };
+		485023971D3A0320009E4A3C /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 485023931D3A0320009E4A3C /* MBProgressHUD.bundle */; };
+		485023981D3A0320009E4A3C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 485023951D3A0320009E4A3C /* MBProgressHUD.m */; };
 		486D7EB41D2255440020375F /* XYCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 486D7EB31D2255440020375F /* XYCoverView.m */; };
 		488E48C41CFEDA2B00BD106A /* XYMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 488E48C31CFEDA2B00BD106A /* XYMenuView.m */; };
 		488EB7B51D13250A00B10936 /* XYFontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 488EB7B41D13250A00B10936 /* XYFontViewController.m */; };
@@ -128,6 +132,12 @@
 		483020E51D03573100800D97 /* XYTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTextView.m; sourceTree = "<group>"; };
 		4830E9F41CFDE47F00841229 /* XYScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYScrollView.h; sourceTree = "<group>"; };
 		4830E9F51CFDE47F00841229 /* XYScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYScrollView.m; sourceTree = "<group>"; };
+		4850238B1D39DC25009E4A3C /* CustomFilter.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = CustomFilter.fsh; sourceTree = "<group>"; };
+		485023911D3A0320009E4A3C /* MBProgressHUD+CZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+CZ.h"; sourceTree = "<group>"; };
+		485023921D3A0320009E4A3C /* MBProgressHUD+CZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+CZ.m"; sourceTree = "<group>"; };
+		485023931D3A0320009E4A3C /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		485023941D3A0320009E4A3C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		485023951D3A0320009E4A3C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		486D7EB21D2255440020375F /* XYCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYCoverView.h; sourceTree = "<group>"; };
 		486D7EB31D2255440020375F /* XYCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYCoverView.m; sourceTree = "<group>"; };
 		488E48C21CFEDA2B00BD106A /* XYMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYMenuView.h; sourceTree = "<group>"; };
@@ -270,6 +280,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		485023901D3A0320009E4A3C /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				485023911D3A0320009E4A3C /* MBProgressHUD+CZ.h */,
+				485023921D3A0320009E4A3C /* MBProgressHUD+CZ.m */,
+				485023931D3A0320009E4A3C /* MBProgressHUD.bundle */,
+				485023941D3A0320009E4A3C /* MBProgressHUD.h */,
+				485023951D3A0320009E4A3C /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		487E7C341D21844100588DE6 /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +542,7 @@
 		48CF7E601CFB2E03003D00FC /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				485023901D3A0320009E4A3C /* MBProgressHUD */,
 				48A9DB0A1D266610004791EC /* Filter */,
 				48CD7B141D147E6400B59071 /* Reachablilty */,
 				48FCDBD21D01DC410042DC8F /* TZImagePickerController */,
@@ -658,6 +681,7 @@
 				48E09EBA1D1A8DE8007D37A4 /* XYPreviewsView.m */,
 				48E09EBC1D1A8DFB007D37A4 /* XYPreview.h */,
 				48E09EBD1D1A8DFB007D37A4 /* XYPreview.m */,
+				4850238B1D39DC25009E4A3C /* CustomFilter.fsh */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -887,9 +911,11 @@
 				48FCDBF61D01DC410042DC8F /* MMVideoPreviewPlay@2x.png in Resources */,
 				48FCDC041D01DC410042DC8F /* TZAssetCell.xib in Resources */,
 				48FCDBFF1D01DC410042DC8F /* photo_sel_previewVc@2x.png in Resources */,
+				4850238C1D39DC25009E4A3C /* CustomFilter.fsh in Resources */,
 				48FCDC011D01DC410042DC8F /* preview_original_def@2x.png in Resources */,
 				48FCDC001D01DC410042DC8F /* preview_number_icon@2x.png in Resources */,
 				48FCDC051D01DC410042DC8F /* VideoSendIcon@2x.png in Resources */,
+				485023971D3A0320009E4A3C /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +1019,7 @@
 				48FCDC061D01DC410042DC8F /* TZAssetCell.m in Sources */,
 				48BA19071D0076E700B6B1F6 /* XYLine.m in Sources */,
 				48C3887A1CFC792D004446C8 /* XYToolOptionsView.m in Sources */,
+				485023981D3A0320009E4A3C /* MBProgressHUD.m in Sources */,
 				488EB7BB1D132B2000B10936 /* XYFontCell.m in Sources */,
 				48FCDC0A1D01DC410042DC8F /* TZPhotoPickerController.m in Sources */,
 				48CD7B1C1D147ECA00B59071 /* XYReachabilityTool.m in Sources */,
@@ -1004,6 +1031,7 @@
 				48E09EB21D1A82F8007D37A4 /* XYFilterViewController.m in Sources */,
 				48FCDC091D01DC410042DC8F /* TZImagePickerController.m in Sources */,
 				483020E61D03573100800D97 /* XYTextView.m in Sources */,
+				485023961D3A0320009E4A3C /* MBProgressHUD+CZ.m in Sources */,
 				4809B5611D04A57D00269C49 /* XYKeyboardToolBarView.m in Sources */,
 				48BA190E1D0091AF00B6B1F6 /* XYTemplateViewController.m in Sources */,
 				4809B55E1D04712700269C49 /* XYMainNavigationController.m in Sources */,

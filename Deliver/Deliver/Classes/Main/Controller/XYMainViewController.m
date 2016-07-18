@@ -28,6 +28,7 @@
 #import "XYCoverView.h"
 #import "XYShareTool.h"
 #import "XYImageView.h"
+#import "MBProgressHUD+CZ.h"
 
 @interface XYMainViewController ()<XYToolOptionsViewDelegate, XYColorViewDelegate, XYColorBtnDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, TZImagePickerControllerDelegate,XYKeyboardToolBarViewDelegate, XYTextSettingViewDelegate, XYCoverViewDelegate>
 /**
@@ -71,6 +72,8 @@
  * 滤镜控制器
  */
 @property (nonatomic, strong) XYFilterViewController *filterVC;
+
+@property (nonatomic, weak) UIImageView *testIV;
 /**
  *  是否是在是设置文字的颜色和size， 默认为NO
  */
@@ -120,7 +123,9 @@
 #pragma mark - 声明周期
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:0.805 green:0.798 blue:0.755 alpha:1.000];
+//    self.view.backgroundColor = [UIColor colorWithRed:0.805 green:0.798 blue:0.755 alpha:1.000];
+    //设置背景色
+    [self setupBGColor];
     self.title = @"标题被吃了";
     
     UILabel *test = [[UILabel alloc] init];
@@ -153,6 +158,33 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+}
+
+- (void)setupBGColor{
+    
+    UIImageView *bgIV = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:bgIV];
+    bgIV.image = [UIImage imageNamed:@"light"];
+    
+//    CAGradientLayer *gradient = [CAGradientLayer layer];
+//    gradient.frame = [UIScreen mainScreen].bounds;
+//    [self.view.layer addSublayer:gradient];
+//    
+//    gradient.colors = @[(__bridge id)[UIColor colorWithRed:0.888 green:0.454 blue:0.449 alpha:1.000].CGColor,(__bridge id)[UIColor colorWithRed:0.899 green:0.864 blue:0.478 alpha:1.000].CGColor,(__bridge id)[UIColor colorWithRed:0.735 green:0.901 blue:0.387 alpha:1.000].CGColor];
+//    gradient.locations = @[@(0.25), @(0.5), @(0.7)];
+//    
+//    gradient.startPoint = CGPointMake(0, 0);
+//    gradient.endPoint = CGPointMake(1, 1);
+}
 #pragma mark - 添加工具选项按钮
 - (void)setupChildView{
     
@@ -218,10 +250,15 @@
         XYTemplateViewController *templateVC = [[XYTemplateViewController alloc] init];
         [self presentViewController:templateVC animated:YES completion:nil];
     }else if (btn.tag == 4){//滤镜
-        NSData *temp = UIImagePNGRepresentation([self clipScreen]);
-        self.filterVC.originalImageData = temp;
-//        self.filterVC.originalImage = [self clipScreen];
-        [self presentViewController:self.filterVC animated:YES completion:nil];
+        
+        [MBProgressHUD showMessage:@"处理中"];
+        
+        XYFilterViewController *filterVC = [[XYFilterViewController alloc] init];
+//        filterVC.originalImage = [self clipCompose];
+        NSData *temp = UIImagePNGRepresentation([self clipCompose]);
+        filterVC.originalImageData = temp;
+        [self presentViewController:filterVC animated:YES completion:nil];
+        
     }else if (btn.tag == 5){//清空
         //移除内存中的图片
         if (_containerView.images.count > 0) {
@@ -249,7 +286,7 @@
     }
 }
 //截取图片
-- (UIImage *)clipScreen{
+- (UIImage *)clipCompose{
     UIGraphicsBeginImageContextWithOptions(_containerView.frame.size, NO, [UIScreen mainScreen].scale);
     [_containerView.layer renderInContext:UIGraphicsGetCurrentContext()];
     
@@ -346,6 +383,7 @@
 #pragma mark - 监听键盘弹出隐藏
 - (void)keyboardWillShow:(NSNotification *)noti{
     
+    XYLog(@"%@", noti.userInfo);
     if ([_containerView.currentSV.textView isFirstResponder]) {
         [self transformKBToolBarWithNoti:noti kbToolBarHidden:NO];
     }else{
@@ -413,10 +451,10 @@
     
     //删除文本的时候
     BOOL isDel = [noti.userInfo[XYIsDeleteText] boolValue];
-    BOOL isNew = [noti.userInfo[XYIsNewRespone] boolValue];
-    if (isDel || isNew) {
-//        XYLog(@"YES");
-        //判断是否移动
+//    BOOL isNew = [noti.userInfo[XYIsNewRespone] boolValue];
+    if (isDel) {
+        XYLog(@"YES");
+//        判断是否移动
         if (_originalCMaxY > CGRectGetMaxY(_containerView.frame) + offsetY) {
             [UIView animateWithDuration:0.1 animations:^{
                 _containerView.transform = CGAffineTransformTranslate(_containerView.transform, 0, moveY);
@@ -638,7 +676,7 @@
 
 #pragma mark - XYCoverViewDelegate
 - (void)coverView:(XYCoverView *)coverView didClickShareBtnWithIndex:(NSInteger)index{
-    UIImage *image = [self clipScreen];
+    UIImage *image = [self clipCompose];
     //    保存到相册
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     if (index == 3) {//相册

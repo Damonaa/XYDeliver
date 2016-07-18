@@ -32,7 +32,7 @@
 
 @end
 
-@interface XYTextSettingView : UIView
+@interface XYTextSettingView : UIImageView
 
 
 @property (nonatomic, weak) id<XYTextSettingViewDelegate> delegate;

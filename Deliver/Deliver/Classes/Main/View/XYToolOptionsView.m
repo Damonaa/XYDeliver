@@ -29,13 +29,13 @@
     }
     return _menus;
 }
-
 //初始化
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self setupChildView];
+//        self.backgroundColor = [UIColor orangeColor];
     }
     return self;
 }
@@ -52,9 +52,9 @@
     //添加菜单按钮
     [self addMenuButtonWithBGName:@"tool_btn_template__default" hlImageName:nil tag:1 title:@"模板"];
     [self addMenuButtonWithBGName:@"tool_btn_bore_rectangle__default" hlImageName:nil tag:2 title:@"有边框"];
-    [self addMenuButtonWithBGName:@"tool_btn_scale_1_1default" hlImageName:@"tool_btn_scale_btn_1_1pressed" tag:3 title:@"1:1"];
-    [self addMenuButtonWithBGName:@"tool_btn_effects_pressed" hlImageName:@"tool_btn_effects_default" tag:4 title:@"滤镜"];
-    [self addMenuButtonWithBGName:@"reset_defult" hlImageName:@"reset_pressed" tag:5 title:@"清空"];
+    [self addMenuButtonWithBGName:@"tool_btn_scale_1_1default" hlImageName:nil tag:3 title:@"1:1"];//@"tool_btn_scale_btn_1_1pressed"
+    [self addMenuButtonWithBGName:@"tool_btn_effects_default" hlImageName:nil tag:4 title:@"滤镜"];//@"tool_btn_effects_pressed"
+    [self addMenuButtonWithBGName:@"reset_defult" hlImageName:nil tag:5 title:@"清空"];//@"reset_pressed"
     
     [self bringSubviewToFront:mainBtn];
 }
@@ -63,6 +63,8 @@
 - (void)addMenuButtonWithBGName:(NSString *)name hlImageName:(NSString *)hlImageName tag:(NSInteger)tag title:(NSString *)title{
     UIButton *menu = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:menu];
+    menu.hidden = YES;
+    menu.alpha = 0.0;
     menu.frame = self.mainBtn.frame;
     if (name) {
        [menu setBackgroundImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
@@ -87,6 +89,7 @@
     if ([self.delegate respondsToSelector:@selector(toolOptionViewDidClickMainBtn:)]) {
         [self.delegate toolOptionViewDidClickMainBtn:self];
     }
+
 }
 
 - (void)showMenu:(BOOL)show{
@@ -116,9 +119,11 @@
             rotate.values = @[@0, @(M_PI * 2), @(M_PI * 4), @(M_PI * 2)];
             btn.center = lastPositon;
             
-            [UIView animateWithDuration:0.5 animations:^{
+            btn.hidden = NO;
+            [UIView animateWithDuration:XYShowBtnDuration animations:^{
                 //        此方法从原始的状态上进行变换
                 self.mainBtn.transform = CGAffineTransformMakeRotation(M_PI_4);
+                btn.alpha = 1;
             }];
             
         }else{//隐藏
@@ -126,10 +131,14 @@
             rotate.values = @[@0, @(M_PI * 2), @0, @(-M_PI * 2)];
             btn.center = self.mainBtn.center;
             
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:XYShowBtnDuration animations:^{
                 //        此方法从原始的状态上进行变换
                 self.mainBtn.transform = CGAffineTransformIdentity;
+                btn.alpha = 0;
+            } completion:^(BOOL finished) {
+                btn.hidden = YES;
             }];
+            
             
         }
         group.duration = XYShowBtnDuration;
@@ -163,18 +172,18 @@
         if ([btn.currentTitle isEqualToString:@"1:1"]) {
             [btn setTitle:@"4:3" forState:UIControlStateNormal];
             normalImage = [UIImage imageNamed:@"tool_btn_scale_btn_4_3default"];
-            hlImage = [UIImage imageNamed:@"tool_btn_scale_btn_4_3pressed"];
+            //hlImage = [UIImage imageNamed:@"tool_btn_scale_btn_4_3pressed"];
         }else if ([btn.currentTitle isEqualToString:@"4:3"]){
             [btn setTitle:@"3:4" forState:UIControlStateNormal];
             normalImage = [UIImage imageNamed:@"tool_btn_scale_btn_3_4default"];
-            hlImage = [UIImage imageNamed:@"tool_btn_scale_btn_3_4pressed"];
+            //hlImage = [UIImage imageNamed:@"tool_btn_scale_btn_3_4pressed"];
         }else{
             [btn setTitle:@"1:1" forState:UIControlStateNormal];
-            normalImage = [UIImage imageNamed:@"tool_btn_scale_btn_1_1pressed"];
-            hlImage = [UIImage imageNamed:@"tool_btn_scale_btn_1_1pressed"];
+            normalImage = [UIImage imageNamed:@"tool_btn_scale_1_1default"];
+           // hlImage = [UIImage imageNamed:@"tool_btn_scale_btn_1_1pressed"];
         }
         [btn setBackgroundImage:normalImage forState:UIControlStateNormal];
-        [btn setBackgroundImage:hlImage forState:UIControlStateHighlighted];
+        //[btn setBackgroundImage:hlImage forState:UIControlStateHighlighted];
         //发出修改模板比例的通知
         [[NSNotificationCenter defaultCenter] postNotificationName:XYTemplateChangeScale object:self userInfo:@{XYTemplateChangeScale:btn.currentTitle}];
     }else if (btn.tag == 1){

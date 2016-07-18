@@ -58,7 +58,20 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.userInteractionEnabled = YES;
+//        self.image = [UIImage imageNamed:@"textBG3"];
+//        self.backgroundColor = [UIColor colorWithRed:0.863 green:0.869 blue:0.887 alpha:0.980];
+        
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.frame = self.bounds;
+        [self.layer addSublayer:gradient];
+    
+        gradient.colors = @[(__bridge id)[UIColor colorWithWhite:0.098 alpha:1.000].CGColor,(__bridge id)[UIColor colorWithWhite:0.400 alpha:1.000].CGColor,(__bridge id)[UIColor colorWithWhite:0.800 alpha:1.000].CGColor];
+        gradient.locations = @[@(0.25), @(0.5), @(0.7)];
+    
+        gradient.startPoint = CGPointMake(0, 0);
+        gradient.endPoint = CGPointMake(0, 1);
+        
         [self setupChildView];
     }
     return self;
@@ -99,25 +112,29 @@
 - (UILabel *)setupOneLabelWithText:(NSString *)text{
     UILabel *alignmnetLabel = [[UILabel alloc] init];
     [self addSubview:alignmnetLabel];
+    alignmnetLabel.textColor = [UIColor whiteColor];
     alignmnetLabel.text = text;
-    alignmnetLabel.font = [UIFont systemFontOfSize:15];
+    alignmnetLabel.font = [UIFont systemFontOfSize:14];
     [alignmnetLabel sizeToFit];
-    
     return alignmnetLabel;
 }
 
 - (UIButton *)setupOneAlignWithTitle:(NSString *)title action:(SEL)action{
     UIButton *alignLeft = [UIButton buttonWithType:UIButtonTypeCustom];
     [alignLeft setTitle:title forState:UIControlStateNormal];
-    [alignLeft setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [alignLeft setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [alignLeft setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [alignLeft setTitleColor:[UIColor colorWithRed:0.016 green:0.775 blue:1.000 alpha:1.000] forState:UIControlStateSelected];
+    
     [self addSubview:alignLeft];
     
+    alignLeft.titleLabel.font = [UIFont systemFontOfSize:15];
     [alignLeft sizeToFit];
+    alignLeft.width += 20;
+    alignLeft.height += 5;
     
-    alignLeft.layer.cornerRadius = 2;
+    alignLeft.layer.cornerRadius = 5;
     alignLeft.layer.masksToBounds = YES;
-    alignLeft.layer.borderColor = [UIColor blackColor].CGColor;
+    alignLeft.layer.borderColor = [UIColor whiteColor].CGColor;
     alignLeft.layer.borderWidth = 1.0;
     
     [alignLeft addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
@@ -134,7 +151,7 @@
     _alignmnetLabel.y = margin;
     
     _alignLeft.x = margin;
-    _alignLeft.y = margin + cellH;
+    _alignLeft.y = margin + cellH - 15;
     
     _alignMiddle.x = margin + CGRectGetMaxX(_alignLeft.frame);
     _alignMiddle.y = _alignLeft.y;
@@ -146,7 +163,7 @@
     _fontTypeLabel.y = margin + cellH * 2;
     
     _normalFont.x = margin;
-    _normalFont.y = margin + cellH * 3;
+    _normalFont.y = margin + cellH * 3 - 15;
     
     _boldFont.x = margin + CGRectGetMaxX(_normalFont.frame);
     _boldFont.y = _normalFont.y;

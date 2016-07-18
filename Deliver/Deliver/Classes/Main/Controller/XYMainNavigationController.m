@@ -25,53 +25,45 @@
     
     NSMutableDictionary *attrNav = [NSMutableDictionary dictionary];
     attrNav[NSFontAttributeName] = [UIFont systemFontOfSize:18];
-//    attrNav[NSForegroundColorAttributeName] = [UIColor orangeColor];
-    
+    attrNav[NSForegroundColorAttributeName] = [UIColor blackColor];
     [navBar setTitleTextAttributes:attrNav];
-    navBar.tintColor = [UIColor colorWithWhite:0.386 alpha:1.000];
-    
     
     //设置UIBarButtonItem属性
-    UIBarButtonItem *barBtnItem = [UIBarButtonItem appearanceWhenContainedIn:self, nil];
-    
-    NSMutableDictionary *attrBar = [NSMutableDictionary dictionary];
-    attrBar[NSForegroundColorAttributeName] = [UIColor colorWithWhite:0.386 alpha:1.000];
-    attrBar[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-    [barBtnItem setTitleTextAttributes:attrBar forState:UIControlStateNormal];
+//    UIBarButtonItem *barBtnItem = [UIBarButtonItem appearanceWhenContainedIn:self, nil];
+//    
+//    NSMutableDictionary *attrBar = [NSMutableDictionary dictionary];
+//    attrBar[NSForegroundColorAttributeName] = [UIColor colorWithWhite:0.386 alpha:1.000];
+//    attrBar[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+//    [barBtnItem setTitleTextAttributes:attrBar forState:UIControlStateNormal];
+}
+
+
+-(id)initWithRootViewController:(UIViewController *)rootViewController{
+    self = [super initWithRootViewController:rootViewController];
+    if (self) {
+        //设置透明的导航条
+        CGRect frame = self.navigationBar.frame;
+        UIView *alphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height+20)];
+        alphaView.backgroundColor = [UIColor clearColor];
+        [self.view insertSubview:alphaView belowSubview:self.navigationBar];
+        [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"bigShadow.png"] forBarMetrics:UIBarMetricsCompact];
+        self.navigationBar.layer.masksToBounds = YES;
+
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    //手势代理
     self.delegate = self;
     self.popDelegate = self.interactivePopGestureRecognizer.delegate;
     self.interactivePopGestureRecognizer.delegate = nil;
 }
 
 
-//隐藏tabBar
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
-//    XYLog(@"%ld",self.viewControllers.count);
-    if (self.viewControllers.count != 0) {
-        viewController.hidesBottomBarWhenPushed = YES;
-    }
-    
-    [super pushViewController:viewController animated:animated];
-}
 
-
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    //移除系统自带的tabBar
-    
-//    UITabBarController *tabBarController = (UITabBarController *)XYKeyWindow.rootViewController;
-//    
-//    for (UIView *view in tabBarController.tabBar.subviews) {
-//        if (![view isKindOfClass:[XYTabBar class]]) {
-//            [view removeFromSuperview];
-//        }
-//    }
-}
 //设置手势代理
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (viewController == self.viewControllers[0]) {//是第一个控制器。则还原手势代理

@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupChildView];
-        self.backgroundColor = [UIColor colorWithRed:0.079 green:0.063 blue:0.073 alpha:1.000];
+        self.backgroundColor = [UIColor colorWithWhite:0.098 alpha:1.000];
 //        self.image = [UIImage stretchableImage:[UIImage imageNamed:@"compose_toolbar_background"]];
         self.userInteractionEnabled = YES;
     }

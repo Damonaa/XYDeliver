@@ -18,7 +18,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.457];
+        self.backgroundColor = [UIColor colorWithWhite:0.800 alpha:0.500];
         self.layer.cornerRadius = 3;
         self.layer.masksToBounds = YES;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -40,6 +40,7 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     
+    cell.textLabel.font = [UIFont systemFontOfSize:12];
     
     if (indexPath.row == 0) {
         cell.textLabel.text = @"图片";

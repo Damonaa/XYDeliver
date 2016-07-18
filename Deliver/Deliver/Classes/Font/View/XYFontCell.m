@@ -44,6 +44,7 @@
     if (!cell) {
         cell = [[XYFontCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reusedCell];
     }
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
@@ -68,8 +69,9 @@
     UIButton *conditionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.conditionBtn = conditionBtn;
     [self.contentView addSubview:conditionBtn];
-    [conditionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [conditionBtn setTitleColor:[UIColor colorWithWhite:0.200 alpha:1.000] forState:UIControlStateNormal];
     [conditionBtn addTarget:self action:@selector(clickConditionBtn) forControlEvents:UIControlEventTouchUpInside];
+    conditionBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     //进度条
     XYCircleProgress *circleProgress = [[XYCircleProgress alloc] init];
     [self.contentView addSubview:circleProgress];
@@ -97,8 +99,16 @@
     NSString *conditionStr = isDownloaded ? @"应用" : @"下载";
     [_conditionBtn setTitle:conditionStr forState:UIControlStateNormal];
     [_conditionBtn sizeToFit];
+    _conditionBtn.width += 10;
+    _conditionBtn.height += 3;
     _conditionBtn.x = XYScreenWidth - _conditionBtn.width - 10;
     _conditionBtn.y = (self.contentView.height - _conditionBtn.height) / 2;
+    
+    _conditionBtn.layer.cornerRadius = 4;
+    _conditionBtn.layer.masksToBounds = YES;
+    _conditionBtn.layer.borderWidth = 1;
+    _conditionBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
     
     _circleProgress.width = 30;
     _circleProgress.height = 30;
@@ -117,6 +127,7 @@
         
         //保存到偏好设置字体
         [[NSUserDefaults standardUserDefaults] setObject:_font.fontTag forKey:XYFontTag];
+        [[NSUserDefaults standardUserDefaults] setObject:_font.simplifiedNormalfaced forKey:XYFontName];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }else{//下载
         
@@ -184,6 +195,9 @@
                 CFRelease(fontURL);
                 CFRelease(fontRef);
                 
+                self.totalProgress += progressValue;
+                NSLog(@"Downloading %.0f%% complete,  total - %f", progressValue, _totalProgress);
+                
                 if (!errorDuringDownload) {
                     NSLog(@"%@ downloaded下载成功", fontName);
                     //累加总下载的进度
@@ -191,7 +205,10 @@
                     _nameLabel.font = [UIFont fontWithName:fontName size:15.];
                     [_conditionBtn setTitle:@"应用" forState:UIControlStateNormal];
                     self.font.hasDownloaded = [NSNumber numberWithBool:YES];
-
+                    
+                    if (_fontDownloadSuccess) {
+                        _fontDownloadSuccess();
+                    }
                 }
             });
         } else if (state == kCTFontDescriptorMatchingWillBeginDownloading) {//即将开始下载
@@ -208,16 +225,13 @@
             });
         } else if (state == kCTFontDescriptorMatchingDownloading) {//下载中ing
             dispatch_async( dispatch_get_main_queue(), ^ {
+                
+                
                 _circleProgress.progress = progressValue / 100.0;
-                NSLog(@"Downloading %.0f%% complete", progressValue);
+//                NSLog(@"Downloading %.0f%% complete,  total - %f", progressValue, _totalProgress);
             });
         } else if (state == kCTFontDescriptorMatchingDidFailWithError) {//下载出错
             NSError *error = [(__bridge NSDictionary *)progressParameter objectForKey:(id)kCTFontDescriptorMatchingError];
-            if (error != nil) {
-                //                _errorMessage = [error description];
-            } else {
-                //                _errorMessage = @"ERROR MESSAGE IS NOT AVAILABLE!";
-            }
             // Set our flag
             errorDuringDownload = YES;
             

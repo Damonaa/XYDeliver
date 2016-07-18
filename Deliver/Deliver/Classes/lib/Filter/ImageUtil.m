@@ -8,14 +8,20 @@
 
 #import "ImageUtil.h"
 
-@implementation ImageUtil
+@interface ImageUtil ()
+{
+    
+}
+@end
 
+@implementation ImageUtil
+void *bitmapData;
 static CGContextRef CreateRGBABitmapContext (CGImageRef inImage)// 返回一个使用RGBA通道的位图上下文 
 {
 	CGContextRef context = NULL; 
 	CGColorSpaceRef colorSpace; 
-	void *bitmapData; //内存空间的指针，该内存空间的大小等于图像使用RGB通道所占用的字节数。
-	int bitmapByteCount; 
+//	void *bitmapData; //内存空间的指针，该内存空间的大小等于图像使用RGB通道所占用的字节数。
+	int bitmapByteCount;
 	int bitmapBytesPerRow;
     
 	size_t pixelsWide = CGImageGetWidth(inImage); //获取横向的像素点的个数
@@ -30,8 +36,8 @@ static CGContextRef CreateRGBABitmapContext (CGImageRef inImage)// 返回一个�
     
 	context = CGBitmapContextCreate (bitmapData, pixelsWide, pixelsHigh, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
     //创建CoreGraphic的图形上下文，该上下文描述了bitmaData指向的内存空间需要绘制的图像的一些绘制参数
-    
-	CGColorSpaceRelease( colorSpace ); 
+
+	CGColorSpaceRelease( colorSpace );
     //Core Foundation中通过含有Create、Alloc的方法名字创建的指针，需要使用CFRelease()函数释放
     
 	return context;
@@ -43,7 +49,7 @@ static unsigned char *RequestImagePixelData(UIImage *inImage)
 	CGImageRef img = [inImage CGImage]; 
 	CGSize size = [inImage size];
     
-	CGContextRef cgctx = CreateRGBABitmapContext(img); //使用上面的函数创建上下文
+    CGContextRef cgctx = CreateRGBABitmapContext(img); //使用上面的函数创建上下文
 	
 	CGRect rect = {{0,0},{size.width, size.height}};
     
@@ -51,6 +57,8 @@ static unsigned char *RequestImagePixelData(UIImage *inImage)
 	unsigned char *data = CGBitmapContextGetData (cgctx); 
     
 	CGContextRelease(cgctx);//释放上面的函数创建的上下文
+    
+    
 	return data;
 }
 
@@ -155,6 +163,8 @@ static void changeRGBA(int *red,int *green,int *blue,int *alpha, const float* f)
 	CFRelease(imageRef);
 	CGColorSpaceRelease(colorSpaceRef);
 	CGDataProviderRelease(provider);
+//    free(bitmapData);
+    
 	return myImage;
 }
 

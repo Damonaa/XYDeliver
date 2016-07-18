@@ -37,6 +37,10 @@ typedef void(^TextViewResponeBlock)(XYTextView *textView);
  */
 @property (nonatomic, copy) TextViewResponeBlock textViewResopne;
 
-
-
+/**
+ *  长按编辑
+ *
+ *  @param gesture 
+ */
+- (void)longPressTextView:(UILongPressGestureRecognizer *)gesture;
 @end

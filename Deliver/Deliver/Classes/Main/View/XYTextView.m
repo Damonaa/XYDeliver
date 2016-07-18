@@ -47,9 +47,17 @@
             fontSize = 15.0;
         }
         
-        NSMutableDictionary *attrDic = [NSMutableDictionary dictionary];
-        attrDic[NSFontAttributeName] = [UIFont systemFontOfSize:fontSize];
-        self.typingAttributes = attrDic;
+//        NSMutableDictionary *attrDic = [NSMutableDictionary dictionary];
+//        attrDic[NSFontAttributeName] = [UIFont systemFontOfSize:fontSize];
+//        self.typingAttributes = attrDic;
+        
+        NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:XYFontName];
+        if (fontName != nil) {
+            [XYFontTool setTextView:self fontName:fontName];
+        }else{
+            self.font = [UIFont systemFontOfSize:fontSize];
+        }
+        
         
         //长按切换为编辑状态
         self.longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressTextView:)];

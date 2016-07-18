@@ -62,8 +62,8 @@
 #pragma mark - 生命周期
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    
+    self.view.backgroundColor = [UIColor colorWithRed:0.863 green:0.869 blue:0.887 alpha:0.980];
+
     [self.tableView reloadData];
 }
 
@@ -71,7 +71,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     //保存到沙盒
-    [NSKeyedArchiver archiveRootObject:_fonts toFile:[NSString fontArrayDir]];
+//    [NSKeyedArchiver archiveRootObject:_fonts toFile:[NSString fontArrayDir]];
 }
 
 #pragma mark - UITableViewDataSource
@@ -83,9 +83,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     XYFontCell *fontCell = [XYFontCell fontCellWithTableView:tableView];
     
+    //下载错误
     fontCell.fontDownloadError = ^{
-        //下载错误
         [self downloadFontError];
+    };
+    //下载成功
+    fontCell.fontDownloadSuccess = ^{
+        [NSKeyedArchiver archiveRootObject:_fonts toFile:[NSString fontArrayDir]];
     };
     
     fontCell.font = self.fonts[indexPath.row];

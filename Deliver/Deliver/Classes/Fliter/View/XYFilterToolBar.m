@@ -29,7 +29,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupChildView];
-        self.backgroundColor = [UIColor colorWithRed:0.243 green:0.210 blue:0.058 alpha:1.000];
+        self.backgroundColor = [UIColor colorWithRed:0.400 green:0.800 blue:1.000 alpha:0.500];
     }
     return self;
 }
@@ -41,7 +41,7 @@
     [self addSubview:_cancelBtn];
     
 //    self.doneBtn
-    UIButton *doneBtn = [UIButton buttonWithNormalImage:[UIImage imageNamed:@"all_top_btn_done_default"] highlightedImage:[UIImage imageNamed:@"all_top_btn_done_pressed"] target:self selcetor:@selector(doneBtnClick) controlEvent:UIControlEventTouchUpInside];
+    UIButton *doneBtn = [UIButton buttonWithNormalImage:[UIImage imageNamed:@"upload_icon_default"] highlightedImage:[UIImage imageNamed:@"upload_icon_pressed"] target:self selcetor:@selector(doneBtnClick) controlEvent:UIControlEventTouchUpInside];
     self.doneBtn = doneBtn;
     [self addSubview:_doneBtn];
     

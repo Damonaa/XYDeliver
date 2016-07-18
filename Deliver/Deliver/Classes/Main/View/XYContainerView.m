@@ -702,10 +702,14 @@ typedef enum{
     //获取上下文
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
-    
-    CGContextSetLineWidth(ctx, _currentWidth);
-    
+    int i = 0;
     for (XYLine *line in self.lines) {
+        //设置线宽
+        if (i < 4) {
+            CGContextSetLineWidth(ctx, _currentWidth);
+        }else{
+            CGContextSetLineWidth(ctx, _currentWidth * 3/5);
+        }
         
         if (_templateBorderStyle == TemplateBorderStyleNone) {//虚线 or 无边框
             [[UIColor clearColor] set];
@@ -718,6 +722,8 @@ typedef enum{
         CGContextMoveToPoint(ctx, line.startPoint.x, line.startPoint.y);
         CGContextAddLineToPoint(ctx, line.endPoint.x, line.endPoint.y);
         CGContextStrokePath(ctx);
+        
+        i ++;
     }
 
 }
@@ -876,13 +882,14 @@ typedef enum{
         _currentSV.verticalTextView.singleWidth = fontSize;
         //弹性键盘，第一个textView成为第一响应
         XYTextView *textView = _currentSV.verticalTextView.textViews[0];
-        [textView becomeFirstResponder];
+//        [textView becomeFirstResponder];
+        [textView longPressTextView:nil];
         
     }else if (indexRow == 2){//横排文本
         _currentSV.image = nil;
         [_currentSV bringSubviewToFront:_currentSV.textView];
         _currentSV.textView.hidden = NO;
-        [_currentSV.textView becomeFirstResponder];
+        [_currentSV.textView longPressTextView:nil];
     }else{//图片、相机
         _currentSV.textView.text = nil;
         _currentSV.textView.hidden = YES;

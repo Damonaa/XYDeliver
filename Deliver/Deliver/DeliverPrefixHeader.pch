@@ -20,7 +20,7 @@
 
 #endif
 
-#define XYShowBtnDuration 0.6
+#define XYShowBtnDuration 0.5
 
 //#warning 修改边界线的位置
 
@@ -40,13 +40,17 @@
 
 #define XYChangeFont            @"changeFont" 
 
-#define XYFontSize              @"fontSize"
-#define XYFontItem              @"fontItem"
-#define XYFontTag               @"fontTag"
+
 
 #define XYTapPreviewImage       @"tapPreviewImage"
 
 #define XYShareSucceed        @"shareSuccessed"
+
+//偏好设置宏
+#define XYFontSize              @"fontSize"
+#define XYFontItem              @"fontItem"
+#define XYFontTag               @"fontTag"
+#define XYFontName              @"fontName"
 
 #define XYKeyWindow [UIApplication sharedApplication].keyWindow
 #define XYScreenWidth [UIScreen mainScreen].bounds.size.width

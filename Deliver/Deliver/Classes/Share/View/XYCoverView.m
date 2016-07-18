@@ -74,11 +74,11 @@
     CGFloat btnY = XYScreenHeight / 2 - 10;
     CGFloat margin = 20;
     
-    CGFloat singleW = (XYScreenWidth - margin * 2) / 4;
+    CGFloat singleW = (XYScreenWidth - margin * 5) / 4;
     
     for (UIButton *btn in self.subviews) {
-        btn.y = btnY;
-        btn.x = margin + singleW * btn.tag;
+        CGFloat x = margin + (singleW + margin) * btn.tag + singleW / 2;
+        btn.center = CGPointMake(x, btnY);
     }
 }
 

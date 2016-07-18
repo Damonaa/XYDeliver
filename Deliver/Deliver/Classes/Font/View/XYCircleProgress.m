@@ -15,7 +15,7 @@
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
-    [[UIColor redColor] set];
+    [[UIColor colorWithRed:1.000 green:0.460 blue:0.380 alpha:0.953] set];
     CGContextSetLineWidth(ctx, 3);
     
     CGFloat centerX = rect.size.width / 2;

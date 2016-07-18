@@ -7,7 +7,6 @@
 //
 
 #import "XYFilterViewController.h"
-//#import "GPUImageFilter.h"
 #import "XYFilter.h"
 #import "GPUImageSketchFilter.h"
 #import "GPUImageMonochromeFilter.h"
@@ -22,6 +21,9 @@
 #import "UMSocial.h"
 
 #import "XYShareTool.h"
+#import "GPUImage.h"
+
+#import "MBProgressHUD+CZ.h"
 
 
 @interface XYFilterViewController ()<XYFilterToolBarDelegate, XYCoverViewDelegate, UMSocialUIDelegate>
@@ -38,6 +40,8 @@
  *  展示的效果图
  */
 @property (nonatomic, weak) UIImageView *displayImageView;
+
+@property (nonatomic, weak) UIImageView *bgImageView;
 /**
  *  分享界面
  */
@@ -60,27 +64,28 @@
 - (NSMutableArray *)previews{
     if (!_previews) {
         _previews = [NSMutableArray array];
-
+        
         XYFilter *filter0 = [XYFilter filterWithOriginalImage:self.originalImage title:@"原图"];
         [_previews addObject:filter0];
-        
-        XYFilter *filter1 = [XYFilter filterWithOriginalImage:_originalImage title:@"LOMO"];
+
+        XYFilter *filter1 = [XYFilter filterWithOriginalImage:self.originalImage title:@"素描"];
         [_previews addObject:filter1];
-        
-        XYFilter *filter2 = [XYFilter filterWithOriginalImage:_originalImage title:@"黑白"];
+
+        XYFilter *filter2 = [XYFilter filterWithOriginalImage:_originalImage title:@"怀旧"];
         [_previews addObject:filter2];
 
-        XYFilter *filter3 = [XYFilter filterWithOriginalImage:_originalImage title:@"复古"];
+        XYFilter *filter3 = [XYFilter filterWithOriginalImage:_originalImage title:@"哥特"];
         [_previews addObject:filter3];
 
-        XYFilter *filter4 = [XYFilter filterWithOriginalImage:_originalImage title:@"哥特"];
+        XYFilter *filter4 = [XYFilter filterWithOriginalImage:_originalImage title:@"锐化"];
         [_previews addObject:filter4];
-//
-//        XYFilter *filter5 = [XYFilter filterWithOriginalImage:_originalImage title:@"锐化"];
-//        [_previews addObject:filter5];
-        
+ 
         XYFilter *filter6 = [XYFilter filterWithOriginalImage:_originalImage title:@"淡雅"];
         [_previews addObject:filter6];
+        
+        
+        //        XYFilter *filter5 = [XYFilter filterWithOriginalImage:_originalImage title:@"锐化"];
+        //        [_previews addObject:filter5];
         
 //        XYFilter *filter7 = [XYFilter filterWithOriginalImage:_originalImage title:@"酒红"];
 //        [_previews addObject:filter7];
@@ -107,9 +112,15 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
     [self setupChildView];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     
+    [MBProgressHUD showSuccess:@"OK"];
+    [MBProgressHUD hideHUD];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -129,6 +140,16 @@
 }
 
 - (void)setupChildView{
+    //添加背景图
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:bgImageView];
+    self.bgImageView = bgImageView;
+    
+    GPUImageGaussianBlurFilter *gaussianFilter = [[GPUImageGaussianBlurFilter alloc] init];
+    gaussianFilter.blurRadiusInPixels = 15;
+    UIImage *gaussianImage = [gaussianFilter imageByFilteringImage:self.originalImage];
+    bgImageView.image = gaussianImage;
+    
     //展示的ImageView
     UIImageView *displayImageView = [[UIImageView alloc] init];
     [self.view addSubview:displayImageView];
@@ -208,5 +229,29 @@
 }
 
 
-
+/**
+ *  XYFilter *filter0 = [XYFilter filterWithOriginalImage:_originalImage filter:nil red:0 green:0 blue:0 title:@"原图"];
+ [_previews addObject:filter0];
+ 
+ GPUImageSketchFilter *sketchFilter = [[GPUImageSketchFilter alloc] init];
+ XYFilter *filter1 = [XYFilter filterWithOriginalImage:_originalImage filter:sketchFilter red:0 green:0 blue:0 title:@"素描"];
+ [_previews addObject:filter1];
+ 
+ GPUImageMonochromeFilter *monochromeFilter = [[GPUImageMonochromeFilter alloc] init];
+ XYFilter *filter2 = [XYFilter filterWithOriginalImage:_originalImage filter:monochromeFilter red:0 green:0 blue:0 title:@"黑白照片"];
+ [_previews addObject:filter2];
+ 
+ GPUImageRGBFilter *rgbFilter = [[GPUImageRGBFilter alloc] init];
+ XYFilter *filter3 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:0.8 green:1.0 blue:1.0 title:@"滤镜3"];
+ [_previews addObject:filter3];
+ 
+ XYFilter *filter4 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:1.0 green:0.8 blue:1.0 title:@"滤镜4"];
+ [_previews addObject:filter4];
+ 
+ XYFilter *filter5 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:1.0 green:1.0 blue:0.8 title:@"滤镜5"];
+ [_previews addObject:filter5];
+ 
+ XYFilter *filter6 = [XYFilter filterWithOriginalImage:_originalImage filter:rgbFilter red:0.9 green:0.9 blue:0.9 title:@"滤镜6"];
+ [_previews addObject:filter6];
+ */
 @end

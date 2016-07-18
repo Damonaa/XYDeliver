@@ -109,7 +109,7 @@
 }
 #pragma mark - 展示or隐藏 颜色以及线宽按钮
 - (void)showColorAndWidth:(BOOL)show{
-    CGFloat margin = 10;
+    CGFloat margin = 5;
     //展示颜色按钮
     for (UIButton *btn in self.colorBtns) {
     //按钮的最终位置
